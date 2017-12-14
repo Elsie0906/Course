@@ -1,0 +1,8 @@
+elsieyen@Yin-Hsias-MacBook-Pro:~/Desktop/USC/Java/lab5$ java -ea AssertTester
+initial configuration(no input value)
+new configuration with coeff 2.0 expon 3
+check the value: coeff2.0 expon 3
+Try to make an assertion: coeff 2.0 expon -1
+Exception in thread "main" java.lang.AssertionError
+	at Term.<init>(Term.java:24)
+	at AssertTester.main(AssertTester.java:28)

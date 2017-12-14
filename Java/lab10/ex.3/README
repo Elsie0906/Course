@@ -1,0 +1,23 @@
+Name: Yin-Hsia Yen
+USC loginid: yinhsiay
+CSCI 455 PA3
+Fall 2017
+
+----------------------------------------------
+cmd: 
+
+elsieyen@yin-hsias-mbp:~/Desktop/USC/Java/lab10/ex.3$ java ConcordDriver3 2 < song.in
+													  java ConcordDriver3 10 < poe.txt > poe10.out
+
+
+Question 3.1 Why don't we need to save the LargeWordPred object in a variable (second call above)?
+
+Question 3.2 Using your results from your code and experiments above, answer the following questions: What are the longest non-hyphenated words occurring in each of melville.txt and poe.txt, how long are they, and how many times did each of them occur in the original file? (Note: there may be multiple words that are the longest.)
+
+For poe10
+
+amontillado 17
+
+For melville10
+
+afternoon 15

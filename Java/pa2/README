@@ -1,0 +1,86 @@
+Name: Yin-Hsia Yen
+USC NetID: yinhsiay
+USC ID: 4337817705
+CSCI 455 PA2
+Fall 2017
+
+----------------------------------------------
+CERTIFY IT'S YOUR WORK
+
+"I certify that the work submitted for this assignment does not
+violate USC's student conduct code.  In particular, the work is my
+own, not a collaboration, and does not involve code created by other
+people, except for the the resources explicitly mentioned in the CS 455
+Course Syllabus.  And I did not share my solution or parts of it with
+other students in the course."
+
+Initial below to "sign" the above statement:
+
+Yin-Hsia Yen
+----------------------------------------------
+ACKNOWLEDGE ANY OUTSIDE SOURCES
+
+List here any code you submitted for this assignment that was written
+with significant help of a course staff member, or code used from the
+textbook.  Be specific about what methods or algorithms are involved,
+and what sections of the textbook are involved (if applicable): [you do
+not need to list any of the code that we wrote for the assignment,
+i.e., the of the starter files for the assignment]
+
+Command line argument & Input reader from CH 11 & lab5
+Representation invariants from lecture 9/21 & lab5
+
+
+1. Run the Solitaire game with 4 different mode (You may turn off assertion without -ea)
+
+java -ea BulgarianSolitaireSimulator -u
+java -ea BulgarianSolitaireSimulator -u -s
+java -ea BulgarianSolitaireSimulator
+java -ea BulgarianSolitaireSimulator -s
+
+2. [Error-Checking] You may try to use some invalid input values such as
+
+[40 1 1 1 1]
+[44 b 1 x]
+
+This program will ask user to try again until input value is valid 
+
+3. Extra Credit
+
+Using hashset to meet the complexity O(n) in method Solitaire.isDone()
+
+
+----------------------------------------------
+KNOWN BUGS or LIMITATIONS:
+
+Q1: When you try to get a private constant value from other files, you may call Class.const or get info from Class method
+ 
+ex.
+class name: SolitaireBoard{
+	public static final int NUM_FINAL_PILES = 9;
+}
+
+1. call Class.const, ex. SolitaireBoard.NUM_FINAL_PILES
+
+or
+
+2. add a public method in Class and get info from this method, ex. SolitaireBoard.getPiles()
+
+public int getPiles(){
+	return NUM_FINAL_PILES;
+}
+
+Q2: convert integer to string
+
+https://docs.oracle.com/javase/tutorial/java/data/converting.html
+
+
+----------------------------------------------
+ANY OTHER NOTES FOR THE GRADER:
+
+
+
+
+
+
+

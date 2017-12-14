@@ -1,0 +1,5 @@
+elsieyen@Yin-Hsias-MacBook-Pro:~/Desktop/USC/Java/lab5$ java AssertTester
+initial configuration(no input value)
+new configuration with coeff 2.0 expon 3
+check the value: coeff2.0 expon 3
+Try to make an assertion: coeff 2.0 expon -1

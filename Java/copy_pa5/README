@@ -1,0 +1,71 @@
+Name: Yin-Hsia Yen
+USC NetID: yinhsiay
+CSCI 455 PA5
+Fall 2017
+
+----------------------------------------------
+CERTIFY IT'S YOUR WORK
+
+"I certify that the work submitted for this assignment does not
+violate USC's student conduct code.  In particular, the work is my
+own, not a collaboration, and does not involve code created by other
+people, except for the the resources explicitly mentioned in the CS 455
+Course Syllabus.  And I did not share my solution or parts of it with
+other students in the course."
+
+Initial below to "sign" the above statement:
+
+Yin-Hsia Yen
+----------------------------------------------
+ACKNOWLEDGE ANY OUTSIDE SOURCES
+
+List here any code you submitted for this assignment that was written
+with significant help of a course staff member, or code used from the
+textbook.  Be specific about what methods or algorithms are involved,
+and what sections of the textbook are involved (if applicable): [you do
+not need to list any of the code that we wrote for the assignment,
+i.e., the contents of the starter files for the assignment]
+
+1. run cmd:  
+
+gmake grades
+
+./grades 100
+(or ./grades)
+
+2. reference
+
+lecture (11/14, 11/16)
+
+https://www.tutorialspoint.com/cplusplus/cpp_switch_statement.htm
+
+Ch 16.4 (implementing a hash table)
+
+----------------------------------------------
+KNOWN BUGS or LIMITATIONS:
+
+1. error: cannot jump from switch statement to this case label
+
+If a local variable is used in switch statement, you should define a scope specific to that case
+
+switch(val){
+	case VAL:
+	{
+		int xxx = ...
+		break;
+	}
+}
+
+2. 	error: expression is not an integral constant expression
+    case "insert":
+
+Ans: string is not allowed to use in a switch statement (c/c++)
+
+
+----------------------------------------------
+ANY OTHER NOTES FOR THE GRADER:
+
+
+
+
+

@@ -1,0 +1,51 @@
+Name: Yin-Hsia Yen
+USC loginid: yinhsiay
+CSCI 455 PA3
+Fall 2017
+
+----------------------------------------------
+Question 2.1 Report to the TA five of the most frequently occurring words in the English language based on what you find in the results. (It doesn't have to be the absolute top five words.)
+
+For poe.out
+
+Concord numeric order:
+the 168
+i 109
+of 75
+a 62
+and 62
+to 49
+
+For melville.out
+
+Concord numeric order:
+the 603
+i 519
+to 432
+and 376
+of 359
+a 334
+
+Question 2.2 For each file report to the TA the most frequently occurring word in that file that is not one of the most frequently occurring words in the English language. For each of your answers, tell why it occurs so frequently in this file.
+
+For poe.out
+
+amontillado 17
+
+For melvillie.out
+
+bartleby 118
+
+Question 2.3 In what order do words that have the same frequency appear in your output? (Look at the last part of your output file to see many examples of this.) Why? (Hint: look at the documentation of the sort method you called.) Would they be in a different order if we had used a HashMap?
+
+
+When the words have the same frequency, it would list in alphabetic order
+
+(a tree map guarantees that its elements will be sorted in an ascending key order)
+
+Yes, it would be in a different order if we has used a HashMap 
+
+
+
+
+

@@ -1,0 +1,99 @@
+Name: Yin-Hsia Yen
+USC NetID: yinhsiay
+USC ID: 4337817705
+CS 455 PA4
+Fall 2017
+
+----------------------------------------------
+CERTIFY IT'S YOUR WORK
+
+"I certify that the work submitted for this assignment does not
+violate USC's student conduct code.  In particular, the work is my
+own, not a collaboration, and does not involve code created by other
+people, except for the the resources explicitly mentioned in the CS 455
+Course Syllabus.  And I did not share my solution or parts of it with
+other students in the course."
+
+Initial below to "sign" the above statement:
+
+Yin-Hsia Yen
+----------------------------------------------
+ACKNOWLEDGE ANY OUTSIDE SOURCES
+
+List here any code you submitted for this assignment that was written
+with significant help of a course staff member, or code used from the
+textbook.  Be specific about what methods or algorithms are involved,
+and what sections of the textbook are involved (if applicable): [you do
+not need to list any of the code that we wrote for the assignment,
+i.e., the contents of the starter files for the assignment]
+
+1. How to run? (4 modes)
+*
+*   1. java WordFinder
+*        look-up in a default dictionary(sowpods.txt), and rack: read from keyboard(user input, one-by-one)
+*   2. java WordFinder dictionaryFile
+*        look-up in a specific dictionary, rack: read from keyboard (user input, one-by-one)
+*   3. java WordFinder < test1.in > test1.out
+*        look-up in a default dictilonary(sowpods.txt), rack: read from file
+*   4. java WordFinder tinyDictionary.txt < tiny.in > tiny.out
+*        look-up in a specific dictionary, rack: read from file 
+
+2. Reference
+
+*   1. read and write data from/to a file (ch11)
+*   2. hashmap (https://docs.oracle.com/javase/7/docs/api/java/util/HashMap.html)
+*   3. comparator (lab 10)
+
+----------------------------------------------
+KNOWN BUGS or LIMITATIONS:
+
+1. [Warning]
+
+Note: Rack.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+solution: 
+HashMap hm  -> HashMap<Character, Integer> hm 
+
+
+----------------------------------------------
+DESCRIPTION OF YOUR CLASS DESIGN AND ALGORITHMS AND DATA STRUCTURES USED:
+
+Approach:
+
+1. Pre-processing the dictionary
+2. Then for each rack, generate all the subsets of that multiset of letters, 
+   and for each subset add all the words from the dictionary that have exactly the same elements as that subset
+
+(more detail information described in each file)
+
+WordFinder.java
+
+	main method, including open file/ read data/ write data/ close file and error handling
+	related to class AnagramDictionary, Rack, ScoreTable
+
+ScoreTable.java
+
+	Scrabble scores for scrabble letters and words (an array recorded scrabble scores for each char)
+	return a calculated score of a given word
+
+Rack.java
+
+	Find all subsets for a given rack 
+	(using a hashmap to calculate distinctive char & its repetition, and then turn it into 2 parts, string & int[] format)
+	ex. rack "aabbbd" -> String unique = "abd"; int[] mult = {2, 3, 1};
+
+AnagramDictionary.java
+
+	pre-processing all words in the dictionary (using a hashmap for fast look-up, approach 2 mentioned in this assignment)
+	find valid all anagrams(of a given word/subsets) in the dictionary
+
+----------------------------------------------
+ANY OTHER NOTES FOR THE GRADER:
+
+
+
+
+
+
+

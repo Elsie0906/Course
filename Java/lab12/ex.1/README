@@ -1,0 +1,64 @@
+Name: Yin-Hsia Yen
+USC loginid: yinhsiay
+Fall 2017
+
+----------------------------------------------
+cmd:
+
+(gdb) run
+Starting program: /home/scf-10/yinhsiay/cs455/lab12/factors 
+Find factors of what number? 2
+Factors of n are: 
+
+Program received signal SIGFPE, Arithmetic exception.
+0x00010f4c in factors (n=2) at factors.cpp:12
+12          if (n % k == 0) {
+(gdb) where
+#0  0x00010f4c in factors (n=2) at factors.cpp:12
+#1  0x00011024 in main () at factors.cpp:25
+(gdb) Quit
+(gdb) Quit
+(gdb) q       
+The program is running.  Exit anyway? (y or n) y
+
+[Example]
+
+(gdb) b 13
+Breakpoint 2 at 0x10f6c: file factors.cpp, line 13.
+(gdb) info b
+Num     Type           Disp Enb Address    What
+2       breakpoint     keep y   0x00010f6c in factors(int) at factors.cpp:13
+(gdb) run
+Starting program: /home/scf-10/yinhsiay/cs455/lab12/factors 
+[New LWP    1        ]
+Find factors of what number? 12
+Factors of n are: 
+
+Breakpoint 2, factors (n=12) at factors.cpp:13
+13            cout << k << endl;
+(gdb) print k
+$1 = 2
+(gdb) print n
+$2 = 12
+(gdb) cont
+Continuing.
+2
+
+Breakpoint 2, factors (n=12) at factors.cpp:13
+13            cout << k << endl;
+(gdb) print k
+$3 = 3
+(gdb) next
+3
+15          k++;
+(gdb) print k
+$4 = 3
+(gdb) step
+11        while (k < n) {
+
+
+
+
+
+
+

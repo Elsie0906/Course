@@ -1,0 +1,16 @@
+Name: Yin-Hsia Yen
+USC loginid: yinhsiay
+Fall 2017
+
+----------------------------------------------
+cmd:
+
+Please enter a command [b, i, a, s, p, h, q]: b
+Please enter a sequence of ints followed by <nl> (e.g:1 2 3): 1 2 3 5 8 0 -1
+The list: 1 0 8 5 3 2 1 
+
+Please enter a command [b, i, a, s, p, h, q]: p
+Print every other: 
+printEveryOther has not been implemented yet.
+
+The list: 1 0 8 5 3 2 1 

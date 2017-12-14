@@ -1,0 +1,15 @@
+Name: Yin-Hsia Yen
+USC loginid: yinhsiay
+CSCI 455 PA3
+Fall 2017
+
+----------------------------------------------
+Question 1.1 The TreeMap inside Concord keeps the entries in order. Why can't we just use its iterator or a for-each loop to visit the values in order?
+
+a tree map guarantees that its elements will be sorted in an ascending key order.
+
+
+
+
+
+

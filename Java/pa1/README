@@ -1,0 +1,77 @@
+Name: Yin-Hsia Yen
+USC NetId: 4337817705
+CSCI 455 PA1
+Fall 2017
+
+----------------------------------------------
+CERTIFY IT'S YOUR WORK
+
+"I certify that the work submitted for this assignment does not
+violate USC's student conduct code.  In particular, the work is my
+own, not a collaboration, and does not involve code created by other
+people, except for the the resources explicitly mentioned in the CS 455
+Course Syllabus.  And I did not share my solution or parts of it with
+other students in the course."
+
+Initial below to "sign" the above statement:
+
+Yin-Hsia Yen
+----------------------------------------------
+ACKNOWLEDGE ANY OUTSIDE SOURCES
+
+List here any code you submitted for this assignment that was written
+with significant help of a course staff member, or code used from the
+textbook.  Be specific about what methods or algorithms are involved,
+and what sections of the textbook are involved (if applicable): [you do
+not need to list any of the code that we wrote for the assignment,
+i.e., the contents of the starter files for the assignment]
+
+Run CoinTossSimulatorTester(Unit Test) for checking the result from class CoinTossSimulator.
+Run CoinSimViewer for simulation.
+
+ps. 
+
+A random number generator used for simulation in CoinTossSimulator (ch 6.9.1)
+An input reader (called by CoinSimComponent)used for getting number of trials from user (ch 4.3.1)
+Implemented Classes (ch 2.9, 2.10 & 3.8)
+
+----------------------------------------------
+KNOWN BUGS or LIMITATIONS:
+
+
+
+----------------------------------------------
+ANY OTHER NOTES FOR THE GRADER:
+
+
+
+----------------------------------------------
+ANSWERS TO ASSIGNMENT README QUESTIONS (if applicable):
+
+Q1: What is the probability of each of the three outcomes in a trial: two heads, one head and one tail, and two tails? Why is one of them different than the other two?
+
+Ans: For a random access of tosses, the outcomes should be evenly distributed: HH / HT/ TH/ TT
+	 (Note that HH represented to head & head; HT represented to head & tail)
+	 Here, we only care about the cumulative outcome of one head and one tail (HT + TH) instead of the order
+	 Therefore, the result showed that bar height of one head and one tail almost twice of the others.
+
+Q2: Roughly how many trials do you need to do before you mostly get results within 1% of these probabilities? Do several simulations using your program to determine an answer to this.
+
+Ans: about 10000 trials, the estimated error will be limited.
+
+Q3: Roughly how many trials can you do before it crashes with an overflow error? State the largest value you tried where it still worked correctly, and one where it overflowed. 
+
+Ans: Using an integer to save the number of trials may make err if the input number is larger than an integer can handled. 
+(In Java, the integer is 32 bits, it ranges from -2,147,483,648 to +2,147,483,647.)
+
+Error described as follows
+
+elsieyen@Yin-Hsias-MacBook-Pro:~/Desktop/USC/Java/pa1$ java CoinSimViewer 
+Start the toss, please enter number of trials: 2147483648
+Exception in thread "main" java.util.InputMismatchException: For input string: "2147483648"
+	at java.util.Scanner.nextInt(Scanner.java:2123)
+	at java.util.Scanner.nextInt(Scanner.java:2076)
+	at CoinSimComponent.<init>(CoinSimComponent.java:58)
+	at CoinSimViewer.main(CoinSimViewer.java:60)
+
+
