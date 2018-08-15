@@ -1,0 +1,25 @@
+/* Medium devices (tablets, 768px and up) */
+/* Large devices (desktops, 992px and up) */
+@media (max-width: 1536px){
+    .container{
+        max-width: 576px;
+    }
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 576px){
+    .container{
+        max-width: 352px;
+    }   
+}
+
+.row{
+	border:1px solid #ddd;
+	background-color: #F3F3F3;
+	margin-top: 50px;
+	padding: 20px;
+}
+.red-star { color: red; }
+
+.redInvalid {
+  border: solid 1px red;
+}

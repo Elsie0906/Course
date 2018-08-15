@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing MomentJS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
+
+    <style>
+
+    </style>
+    <script>
+
+    function getTime(){
+        var text = "<p>" + moment().format('YYYY-MM-DD HH:mm:ss') + "</p>";
+
+        text += "<p>" + moment.utc().format('YYYY-MM-DD HH:mm:ss') + "</p>";
+
+        var int = moment().format('d'); // string
+        console.log(moment().format('d'));
+        console.log(int+1);
+        var num = moment.utc().date();  // integer number
+        console.log(moment.utc().date());
+        console.log(num+1);
+
+        console.log(moment.utc().add('m',-240).format('YYYY-MM-DD HH:mm:ss'));
+        console.log(moment.utc().add('m',-420).format('YYYY-MM-DD HH:mm:ss'));
+
+        document.getElementById("time").innerHTML = text; 
+
+        var date = moment.utc().format('YYYY-MM-DD HH:mm:ss');
+
+        console.log(date);
+
+        console.log(moment().toDate());
+
+        console.log(moment().day());
+
+            
+    }
+
+    </script>
+  </head>
+<body>
+
+<div>
+  <h>Get current Time</h>
+  <input type='button' onclick="getTime()" value="Time">
+  <div id="time">Time</div>
+</div>
+
+</body>
+</html>

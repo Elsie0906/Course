@@ -1,0 +1,4 @@
+http://cs-server.usc.edu:16651/api.php?geoLocation=University+of+Southern+California
+http://cs-server.usc.edu:16651/api.php?loc=34.069,-118.3502&dist=16090&category=Default&keyword=pizza
+
+http://yinhsiay-hw8-env.us-east-1.elasticbeanstalk.com/index.php?loc=34.069,-118.3502&dist=16090&category=Default&keyword=pizza

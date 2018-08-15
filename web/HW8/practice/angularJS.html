@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  </head>
+  <body>
+    <script>
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope, $http) {
+        $http.get("http://cs-server.usc.edu:16651/angularTest.php?q=")
+          .then(function(response) {
+            $scope.myWelcome = response.data;
+        });
+      });
+</script>
+    <div ng-app="myApp" ng-controller="myCtrl"> 
+
+      <p>Today's welcome message is:</p>
+      <h1>{{myWelcome}}</h1>
+
+    </div>  
+  </body>
+</html>

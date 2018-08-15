@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  </head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<form ng-submit="myFunc()">
+    <input type="text">
+    <input type="submit">
+</form>
+
+
+<p>{{myTxt}}</p>
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope, $http) {
+    $scope.myTxt = "You have not yet clicked submit";
+    $scope.myFunc = function () {
+        $http.get("http://cs-server.usc.edu:16651/angularTest.php?q=")
+          .then(function(response) {
+            $scope.myTxt = response.data;
+        });
+    }
+});
+
+</script>
+</body>
+</html>

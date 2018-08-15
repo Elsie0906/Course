@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form name="myForm">
+  <h2>Let AJAX change this text</h2>
+  <button type="button" onclick="loadDoc()">Change Content</button>
+  <p id="demo">Show me the result</p>
+  <p name="latty"></p>
+  <p name="lon"></p>
+</form>
+
+<script>
+function getGeoLocInfo(jsonObj){
+    text = "<h>Get GeoLocation</h>";
+
+    var latt = jsonObj.lat;
+    var long = jsonObj.lon;
+
+    text += "lat: " + latt + "<br>";
+    text += "lon: " + long + "<br>";
+
+    var test = document.latty;
+
+    text += "test: " + test + "<br>";   
+}
+function loadDoc() {
+    var url = "search.json";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        
+        //var jsonObj= JSON.parse(this.responseText);
+        //getGeoLocInfo(jsonObj);
+        document.getElementById("demo").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}
+</script>
+</body>
+</html>

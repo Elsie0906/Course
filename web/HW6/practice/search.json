@@ -1,0 +1,774 @@
+place.php:344     {
+   "html_attributions" : [],
+   "results" : [
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0187057,
+               "lng" : -118.2843956
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02005552989272,
+                  "lng" : -118.2830457701073
+               },
+               "southwest" : {
+                  "lat" : 34.01735587010728,
+                  "lng" : -118.2857454298927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "7163245ddd3b462ced6f37b3f440f1c9e90a2742",
+         "name" : "USC Law School Cafe",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2560,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/116872559019495767527/photos\"\u003eSmith Miranga\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAMSUXIMfMkmu-e4n42ZwJn6QYLuWbR-cq0MdGL0du4uzCCg3QQgB8m_1DK3VjVfbjEQQnnX8MTOhX0gayEfC2T35amtsnTc_brjuXmjtFuLKwsGvG-hXsp737OIjHNR4LEhCUb4BW1CFE6RIew_OBxGF7GhSQpE247xCPJtBGy7AIi2v1kHVQiA",
+               "width" : 1440
+            }
+         ],
+         "place_id" : "ChIJddwOWuLHwoARFZlsBjrcY2E",
+         "price_level" : 2,
+         "rating" : 5,
+         "reference" : "CmRbAAAArkQLhD5JABavaMjtH3Y4YtJB8z-OYOXDBsPXH0jdcDDow-rCJmKFbxzC4MFq2mYwj083X0UhXK23TvT2isRGMMB_bQcn6P901uq1SaYCFnTU92J-iasbjuHZ9km9z5bzEhApMCnFU11HSqTwfyEN_kg7GhQCIVG4pN1Ihjse5KOG09dQ8HpKNg",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "699 Exposition Blvd, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0255459,
+               "lng" : -118.2854621
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02713402989271,
+                  "lng" : -118.2845437201073
+               },
+               "southwest" : {
+                  "lat" : 34.02443437010727,
+                  "lng" : -118.2872433798927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "dfabde4aa4b3f49d5a8eb0ca3423fc7a9b862d7d",
+         "name" : "Cafe Dulce (USC Village)",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 4032,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/108746362578619929793/photos\"\u003eKrystel Villamor\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA8hNUlBr5NN1z24_7agXtvsrk19LWbncvG-Zf3-PxgPwaDbDcrdY9r5QUcmqnz-QsR2cxWZyuCyYTif_t_Cmoyu5x8kmE_U5Qk2QwFLTKb_eM_uBulmbNc49R7pA_2C1vEhAT3gXLyvKx3byxaoX6oZ9fGhReTNgjp2eMgKUQmaw1thu-Ult1zQ",
+               "width" : 3024
+            }
+         ],
+         "place_id" : "ChIJW-W3cuXHwoARybuUzJ-ussE",
+         "rating" : 5,
+         "reference" : "CmRbAAAAVyBnHpLETmtpDHNHcaaPTmFQWfHokL2XoskaFULBFxnFMz-0SQ4mI0BRCtnd6ATJIdMsg8unqHHCSAZuz9Z-uUv_-8XtPXkXmADczZ8XXavVKaXTMCmoPMmlXU1bYu2HEhDjuEPAlv621SDdvPWqdBCfGhT7AwesXdmM6RbocIQLS6NO0QnKEA",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "3096 McClintock Ave Ste 1420, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.02005,
+               "lng" : -118.2899941
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02145227989272,
+                  "lng" : -118.2887640701073
+               },
+               "southwest" : {
+                  "lat" : 34.01875262010728,
+                  "lng" : -118.2914637298928
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "787d01de56fe9b862d3de0147c55683b822f0d6f",
+         "name" : "Tutor Hall Café",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "place_id" : "ChIJ58OakPzHwoARTtAycufSGKc",
+         "price_level" : 2,
+         "rating" : 3.5,
+         "reference" : "CmRbAAAAyQX52nrg0h4p-Wns0k2PO3ecQwVTYqjRYUYI0bvOQ1bJOxuKduTxQBt_ksehhm34CUqdTfBvDNB5dVvbJ4o9sQv43EnBO1qxwqQOhIHOa7BqKF296cAJXqIcjhyGykmwEhAOlEn5yYoKofiqtbXdKwKEGhTr8MT5Gvv7d75qkjt75cYQ7MLN0g",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "3710 McClintock Ave, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0228857,
+               "lng" : -118.2870926
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02433887989272,
+                  "lng" : -118.2857135701073
+               },
+               "southwest" : {
+                  "lat" : 34.02163922010728,
+                  "lng" : -118.2884132298927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "660f3dd7c0e3a474bff7ed03c0108c190db64e60",
+         "name" : "Little Galen",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2448,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/114168483864273406340/photos\"\u003eYihang Zhang\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA9Tk9t_oxDoH-13tfe9M8hixpDbYchjNb3LjaLFex-l9Hew4fyws-gg2Y2OQZscY9aEoAxVvgXImiUKsTsKzM_YnVpuejbdyE-mELSFLFxPM5C7IgKan8BzBtwHYlQxcmEhDfS9Mz33Z1TFauNNgx4eqRGhRmhpvfYqZurHFSKBBQDfgpb5yeuQ",
+               "width" : 3264
+            }
+         ],
+         "place_id" : "ChIJX6BJz-THwoARBfKkYrVTu_k",
+         "price_level" : 2,
+         "rating" : 4.1,
+         "reference" : "CmRbAAAA_k3nNicPLPs7l9XOjyVRKqkzKgtY07mYd38TKAfIrdMIGWOV4bN-sJLBtFXTDPcM5Q8E4X4YWa48YMZJug7FchcPXPOkxRfRjnkDd1fu_JJM9Cd7EZ0cm5V1GRrW-NFEEhDXhtIPOliwsc2pbi2uhF3LGhT-wIkejOH5HwvBDDXJF6T7s1fF-Q",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "W 35th St, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0230152,
+               "lng" : -118.2843266
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02429837989272,
+                  "lng" : -118.2830200201073
+               },
+               "southwest" : {
+                  "lat" : 34.02159872010728,
+                  "lng" : -118.2857196798927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "66b8140578500ff27c0a5cb711625debadf82cee",
+         "name" : "Good Karma Cafe",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "place_id" : "ChIJbV3uZuTHwoARL1Lnr251URY",
+         "price_level" : 2,
+         "reference" : "CmRbAAAAZ5lXhZfBHXO1TevwPPPeNEP88eDjEbMyZSr30BsflheyqDluzhPu08LRueFGQmWq1yzgsnTh7zvv-gMFZzUrlPYg5GN1rtvzbudDy_Ky7p7WWUueecaLi9sdbu5AcYmtEhCWposMCkq_J9DEMbryzh6lGhQoxxEV7SmgBhsgJc6WLaAkDInrHg",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "817 W 34th St, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0188478,
+               "lng" : -118.2824132
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02013267989273,
+                  "lng" : -118.2809152701073
+               },
+               "southwest" : {
+                  "lat" : 34.01743302010728,
+                  "lng" : -118.2836149298927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "c98957156ff0094e1eeb7b767ff3abcaf4b34f4a",
+         "name" : "Fertitta Cafe",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "place_id" : "ChIJP6dYIOLHwoAR1QK-53XvyW0",
+         "price_level" : 2,
+         "rating" : 5,
+         "reference" : "CmRbAAAArgRrStHj7yIb4PzzKqTbscgTLBdfJncl3ZO2S5dSMUscfP0b7EQoczwDUZbGvox_CL9qQyRjiL9EPR2ZREfIbOhz-e6hyBdeee16PxxfUTv4YPirvuVm6m5X3e_aMH1DEhAr44sYu73sFcVjHo6D_6SFGhQLiQOb68bcUu6z-wWtorhmnbFn7g",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "3601 S Figueroa St, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0191957,
+               "lng" : -118.2766387
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02057032989272,
+                  "lng" : -118.2753450701072
+               },
+               "southwest" : {
+                  "lat" : 34.01787067010728,
+                  "lng" : -118.2780447298927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "8f96e79c5e2167f017c4e608cda2f2403112b9e8",
+         "name" : "Urbnmrkt",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2160,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/117048936145763886997/photos\"\u003eShawn P.\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAHjPfWkq6f2cMfTC7RdyjyH4JcwSnz6DD55EKtjZ_3830ZcxHCrB7apTvEUL8oNkpRlOB27IYvIlgPnn_SXxg0u3kl3oF8U-rvgCKvWV_3EkA3Y5uJpvoFLEo_ZVxBAyWEhDrOcHnZ9tm5OwoRx-CwDwSGhSek_2G3S_tdsI9KbMcAQjQRgAiIQ",
+               "width" : 2880
+            }
+         ],
+         "place_id" : "ChIJ3zSwBeDHwoARvABQYFIAmXo",
+         "price_level" : 1,
+         "rating" : 3.8,
+         "reference" : "CmRbAAAABkY48z0M_R2QJrtQA7mdOY0aCh2mK3HHNUHuyI23QIo6PhsXLfvFuizeB7FuOU6KB5QusDOZEZltBGQ2Dnn3QoCopTJK49oLMfz_rOfa9cMqJCU8AIOr-5hTAAvXnZALEhAfbfPJv1Wu2YgCA78ae5aNGhTEMpmu_IghX_jVyfLJV4UZboyu2g",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "3434 S Grand Ave #1, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0201147,
+               "lng" : -118.283316
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02181797989272,
+                  "lng" : -118.282529
+               },
+               "southwest" : {
+                  "lat" : 34.01911832010728,
+                  "lng" : -118.285677
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "e1482cc2644a7b2c800b1877b1488e35f4fe8e35",
+         "name" : "Literatea",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "place_id" : "ChIJg8_0t-PHwoAR1y8KH4CjUuQ",
+         "price_level" : 2,
+         "rating" : 4.2,
+         "reference" : "CmRbAAAAQF_QJAaO1v8e_bLaA4gGVFDq4lEzIUmtILuPr4S0EEJGZWcLVUK3TWOT4bTsnUSqbwhxbLgVxm2Bk2TIGHWfvb-PmUC1gMReTf-LTZDE8CUHeLiKu14GJ8wakzEUwFbSEhAfpttW_7v40U8-XqiTfSU2GhQKbAazq3ZtmGT00POLAjEYrL0_kg",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "3550 Trousdale Pkwy, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.03447,
+               "lng" : -118.283553
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.03585437989272,
+                  "lng" : -118.2822796201073
+               },
+               "southwest" : {
+                  "lat" : 34.03315472010728,
+                  "lng" : -118.2849792798927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "94501d4822fd9a10d39fab9154fd587e734829fc",
+         "name" : "Nature's Brew",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 3036,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/113865142084148630358/photos\"\u003eVanessa Jupe\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAABVAm2NhJG33W5qDCqjkoNA60enYVToW8CDcCEEfKmGZAxjYVk588pgLdxHB4Xcqk9GmVWCA-Sd4Pqxy4EfhTXVDwcgFlXunM64Qddc9-aO1Jp4wH5s5uYEC7ENdQe-Q-EhA_fLOZDBOChCpuTK5aTDuNGhSqut7nC3Qc7eQddMlv-q_ISzuw7Q",
+               "width" : 4048
+            }
+         ],
+         "place_id" : "ChIJJ37_XOzHwoARJSuwIwVv-NE",
+         "rating" : 4.6,
+         "reference" : "CmRbAAAABtCQ0b1BIsysWFCr0Ftb99tOQpJyvc5RNNixowIJrwE2vi1WyLs96NenuuKpUU0EqPQcP0vGdbIuQsGVhfJiZnV5_npp1yJognKH4zbEW9SmSTchSU-9UPcVqwiiWPfJEhAcyyLWN4RR-4LuI4sijZEaGhRUDPwutumPwY9u360A1RUdvVvXFg",
+         "scope" : "GOOGLE",
+         "types" : [
+            "cafe",
+            "meal_takeaway",
+            "store",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "vicinity" : "2316 S Union Ave, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0655018,
+               "lng" : -118.3089061
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.06685237989272,
+                  "lng" : -118.3076641701073
+               },
+               "southwest" : {
+                  "lat" : 34.06415272010728,
+                  "lng" : -118.3103638298927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "5117c6197d5f337919b5194f80ed592521e6bddb",
+         "name" : "The Coffee Bean",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 1836,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/105812106954018951181/photos\"\u003eh_ gmail\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAMbqVocTUevfEFUxMOz4JRPhwUS6JFqiGjYNO3cRSSvB4iIy2AmmQ-6-ZwSxyXz5rtxFtfaNQcZL2SJ8l1NAObK8yrdCFo0QlvDPfXMwYSrXJ9h_XjC5XGudsx_UhmBQqEhB8D3A_w_p_0E6qcRV8BoZTGhQ8V6qL2ZDfurCNQ2X7rc_lZk8hmA",
+               "width" : 3264
+            }
+         ],
+         "place_id" : "ChIJ8cqjSJq4woAR_N-rnLy-lPM",
+         "price_level" : 1,
+         "rating" : 5,
+         "reference" : "CmRbAAAAwhAzy3iMTt1KxLw94PqSn0avg_yQmtFT65d9vR5gmaWV_mll9veilf3QQwAD6gPBgHarrHeBJEQb56UZOWMKG8_1DRdpA_G0sLsrD4pDjENfxQYE6jnaIIJfjiMB4If1EhArrLa2zIqT9cwomllsEKXMGhRPzG9OgQfdNYMmDjm1PwOk_08Nhg",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "store", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "450 S Western Ave #102, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.03055,
+               "lng" : -118.415748
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.03204387989272,
+                  "lng" : -118.4144237701072
+               },
+               "southwest" : {
+                  "lat" : 34.02934422010728,
+                  "lng" : -118.4171234298927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "bdd4eb9d1ed3eb1db671a45f62f8447b1d91bfb7",
+         "name" : "The Coffee Bean & Tea Leaf",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 1080,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/100127707688674279924/photos\"\u003eA Google User\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA1pbODtBftRPD9j3JCPRY08pq2Cy4xjY9PL1ra3Ey0g_HFr4l3C-ORODk2cWlhf3mQI1eb1rks5cyUKArH9xBn8BM8oFJmN-szxvIq-K4SvWibSTU_2GdQNZuScaMQEzhEhCp3bxZnnHOeIMgoCsqRUIsGhSXm-OHsgJhUjLAD0n2CsftNm2qdA",
+               "width" : 1620
+            }
+         ],
+         "place_id" : "ChIJH-j8-sm7woAROUnky01nsAM",
+         "price_level" : 1,
+         "rating" : 4.4,
+         "reference" : "CmRbAAAADyu3Qf02Wj8ULVor4K80rglDDdR8WSJLBec9VXh728afCKcl6M-ee-MPPhyJILKRqBhUvMj4L_mVIR54QxcXQVnnopsyNMpJktDNljsq5ZqU49C0YrYcy0cp25utDMZgEhBOJQte6MWcSbEeB7N3_dWMGhQ17BE4KiIMu29EkNRPL0AMbOZK1A",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "store", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "10612 National Blvd, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0235777,
+               "lng" : -118.2865005
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02501562989272,
+                  "lng" : -118.2850947201073
+               },
+               "southwest" : {
+                  "lat" : 34.02231597010728,
+                  "lng" : -118.2877943798928
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "1ef942ef93dfabc83d0fd8925456f46e323aa28d",
+         "name" : "Coffee Bean and Tea Leaf Cafe",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 4032,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/112387647431256621114/photos\"\u003edaryl burnett\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAFRU9zxFj9iq0xPEr6SU5zMpgU1PfoYe4cVF-Lgh8VworAoaB1gYs8cQinPm-D9-sNfTRk06CO6HNrAxb3RsRzG6agT_jkPDIQqpJKrozA5ivNEwgJIGUSQDKGwJ8TU5zEhAuD-pTtATfqOCTs-7Je4WGGhTh998l4Q3qcvbjlMHdRIiZRQMS7Q",
+               "width" : 1960
+            }
+         ],
+         "place_id" : "ChIJq6k33OTHwoARGtmsYvn6HCc",
+         "price_level" : 1,
+         "rating" : 3.2,
+         "reference" : "CmRbAAAAXo36-a_FVZwbFTKHhVsSkRFQxzeFCY85aup9oSVGcvXKiSuJi7MXKmUVYWGwBP9TeDi0ymjhU18vikCkWeIT6UO0HhOA1SQUhhtGS7lSOmP4Kr-ndQksQTadekCucx-REhA_2xq7oHFExOrOQIWOHWqwGhTrcqLQmYM6dSat4cp5XqMN816EtQ",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "900 W 34th St, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.04884790000001,
+               "lng" : -118.2404543
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.05021822989271,
+                  "lng" : -118.2391045701073
+               },
+               "southwest" : {
+                  "lat" : 34.04751857010727,
+                  "lng" : -118.2418042298927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "6eaf8d232dd7a12b10951be26194e08bfe428119",
+         "name" : "Cafe Dulce",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 3024,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/112485034789413782703/photos\"\u003eAbe S\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA5cDszwXrDXVeCDkrzABWJjHpOVOOD7L_ypTrqQ77qqmZUu87Y_kobm5SGpjMKwSN8pvgQCazz8vG9cX_NemBOWPt3z2Sj_W3UogsSX4jQRebdFY-hi0jItev_R7V-sCmEhBiag2lg91pcXnJrCaLnZpuGhTVoKLY6IRapOPZjngy26cn1vYHYw",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJCfsD7kfGwoARTf0tjYY4J74",
+         "price_level" : 1,
+         "rating" : 4.4,
+         "reference" : "CmRbAAAAH903seZiqXEFPZyfnQ6PKfkBsFdHLHfEJZdLyD7kY6whSBOVyJ3ggItVHD98P-27Iz00UitJbqnO-eLCBzi7GkIuTF4V8eWJDN4CRkLkt6yAeYvyNp-OYhhXfMLWlkEPEhC2IYhBrFPfnd0AIflEscfEGhTB1h1r_-W7ItU_bV5g2M5QU5cpqw",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "134 Japanese Village Plaza Mall, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0336328,
+               "lng" : -118.2810025
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.03507282989273,
+                  "lng" : -118.2795937701073
+               },
+               "southwest" : {
+                  "lat" : 34.03237317010728,
+                  "lng" : -118.2822934298928
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "da4b5a692fb3a136eb55f3e8bc0894e379e41d98",
+         "name" : "23rd Street Cafe Indian Restaurant",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 3024,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/107760106681047521309/photos\"\u003e23rd Street Cafe\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAEMr-EpRazyjYpqzU1SxwDizX46w4aj3jzIoTD3MBgaf_TFcsKXS-7bJplX7W7rKONlSDt9MqtnHlWQt1ftTsPKCXtrMLlWWoR-2GZaLSA0uf2une6oRg394ipvhX2-_xEhAy7xJgUJh7nErAeBqwXY-UGhTrbW1vJA0ATEAbkbsoK_0Lw7V5tQ",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJnyb_7uvHwoARu6qnOAD0Wt8",
+         "price_level" : 1,
+         "rating" : 4.1,
+         "reference" : "CmRbAAAA8rxsLojooEkbSB3tb0U9AztH_EqGrVCNRTlflXGACKULmu1Uxt7Nu9zbyzET-bqLwF0-LV4UReMiMCTLRd0F9ZHlkYmv_rp90KOyPGtsiKCSX7iKQ4WtdC9XOUPIkfZQEhC7zYiJthD6OlulwS9DsmyiGhR85TdgPT604ZyQDd_16o4regS-hg",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "restaurant", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "936 W 23rd St, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0191291,
+               "lng" : -118.2880073
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02047892989273,
+                  "lng" : -118.2866574701073
+               },
+               "southwest" : {
+                  "lat" : 34.01777927010728,
+                  "lng" : -118.2893571298927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "fc1164e8fd671d83ecc9d4f4765d24a85028a129",
+         "name" : "Nekter Juice Bar",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 400,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/114265974630517864230/photos\"\u003eNekter Juice Bar\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAKTYI6xFFpLt-C1XaldzjrZ47Irjdh-PdLWC57PscnPquyJFroC150CJOeQNp8lQyhNumCzUHd_22h1C_mJtE-mCiLuoGOP3kz5I8J5f-EqTwrVG8MYUA_NbhmbAWpH8aEhB9frMzirrCS-BeZUxSEp6eGhTls93xutpvFdiHg5SVaN4mZOZrLw",
+               "width" : 533
+            }
+         ],
+         "place_id" : "ChIJH1sPkeTHwoAR6M0fuaJ2-s8",
+         "rating" : 3.8,
+         "reference" : "CmRbAAAAZChg2lz_ikkcv9tw01Y-vRGarnaNnvgdp1TWRTP_v8wPxNDW_MOZK1TgKi-Od4CImecR5xsYZh6z0zo-VYulgXuACestCvhPDa6de-z3Exx2P_s-FJMVAbIbMGTuTT8BEhCb5swxKn0p-bauBsyg-gRZGhT3j4kIyiKk0ndg0VXKvFYqrh4C1g",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "restaurant", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "850 W 37th St, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.024879,
+               "lng" : -118.2785286
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02615867989272,
+                  "lng" : -118.2770175701073
+               },
+               "southwest" : {
+                  "lat" : 34.02345902010728,
+                  "lng" : -118.2797172298928
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "5284fbd9ab0aa729d30cad33353ff7d6043d2eba",
+         "name" : "Volcano Tea House USC",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2448,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/114843860647738510297/photos\"\u003eJoey Uy\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAA_x2hhB9AhTYl7nzpZZ0Dn_h8EOH9fTcoa883SJkTiqymYxxeqMwnQj9_nPhGrsHT_MjFxrJI3eQp5AeU_qitui3a7x_SkFxMMS8mHkCvlrHfeU2YKneK59CnhZeeW38aEhA0mapLyuLAHDRAsgWuXT4FGhSOiRomeGLvk4lVPOk4Y-0cEM0lwQ",
+               "width" : 3264
+            }
+         ],
+         "place_id" : "ChIJz5vlF-fHwoAR4X5Da3Lk9xI",
+         "rating" : 3.9,
+         "reference" : "CmRbAAAAjhcuwTpmsr6-QFaRacb_wPhpvJ5hqmvzhrRIlFdamIrqg58Wj9ZXhRcirvgGcUtUJKWVUgbufwFwjEmTbUzyzMhHYWV89xBi80qc6CpXo3mj7nfMX13Y96T2iPDXlcO4EhAcI0BKYLxbow7Oi_p3DhjWGhQto86GgS0tib_TN5i7rClc5jk2fQ",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "3019 S Figueroa St, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.024857,
+               "lng" : -118.278633
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02612122989272,
+                  "lng" : -118.2770865201073
+               },
+               "southwest" : {
+                  "lat" : 34.02342157010728,
+                  "lng" : -118.2797861798928
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+         "id" : "8afc31df4a1a3ae93065902dbfeba2e613684aa9",
+         "name" : "Viztango Cafe",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 3024,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/112515852565734646137/photos\"\u003eVIC ZAVALA\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAASdDBJn4IMuBxN7i4InSaJqG7bO4H_lPkQLiubKb4NXqdGpeS8gyJK7psJZEt_m84ANzPARDpmZ88ltk9bT0uv2nVL4k7YX-NWcVgxDNi_7iO6ocImV9i1smPlq9XV6KIEhCuez-vzGtD4sxbkDvq1p1JGhQ5qEgy3LJQRATtpoPsIhDngl6v0A",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJ34n9F-fHwoARchKQEMKPPnA",
+         "price_level" : 1,
+         "rating" : 3.9,
+         "reference" : "CmRbAAAA3O2u_d6EgZyOTLFXnkNr0lZCdhvVjBYnvQqCvg9uMElsRJpu92_DnpS8rMSNPiDno5z1Tg95iQabywJYomM3SibSj_jsTlNlgUdReQ6Xb4vW2cO6GAA4kW5j4YekvmAZEhDC7PMTCbCX9sW_wAneHtr2GhSlA6TRLs0N_qwvItq2DRAci3ujvQ",
+         "scope" : "GOOGLE",
+         "types" : [
+            "cafe",
+            "bar",
+            "restaurant",
+            "food",
+            "point_of_interest",
+            "establishment"
+         ],
+         "vicinity" : "3017 S Figueroa St, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.02466,
+               "lng" : -118.28805
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.02600982989272,
+                  "lng" : -118.2867001701073
+               },
+               "southwest" : {
+                  "lat" : 34.02331017010728,
+                  "lng" : -118.2893998298927
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "cceead3b59936c720e2d1ac7f109715201c71db1",
+         "name" : "Starbucks",
+         "opening_hours" : {
+            "open_now" : true,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 3024,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/109844891514860907233/photos\"\u003eJean Tu\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAqMRez2Lb5OvSE-yu5dNxOWv2ODInLUqCIGSywK4sZgazMCoDoTdJkKw_OqRxMeDLoX3OO3V030nIqlUHMI-FoigNeVuQJuuSM6hcSktE_P9SshObc9aNoDds-Ec-bK-XEhBsiwOiuFQE_k3rNj2UzUFEGhQRiinbd_1KaxPtTeov_093Ssw4tQ",
+               "width" : 4032
+            }
+         ],
+         "place_id" : "ChIJg2-Xy_rHwoARn0yRiR7oyPw",
+         "price_level" : 2,
+         "rating" : 4.7,
+         "reference" : "CmRbAAAAQxiQK-5zfyppJ72f75XxlcN73aqfrrkt8Kml6N_gpD8kaSeg0ClZgK8MPx6YolkkFTCR4jLH0H-CwFI5D4OxhS359yJL20Y4LFjHOqUJac3rIZ7MCQ8UPhXTQjho_NLTEhBZPdUV5En9_8y7_7KKhilYGhQs3PKvUCZJizB2if6aNEum3krGmQ",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "store", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "1025 WEST 34TH ST., KINGS HALL 1ST FLOOR, Los Angeles"
+      },
+      {
+         "geometry" : {
+            "location" : {
+               "lat" : 34.0336534,
+               "lng" : -118.2414513
+            },
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 34.03500322989272,
+                  "lng" : -118.2401014701073
+               },
+               "southwest" : {
+                  "lat" : 34.03230357010727,
+                  "lng" : -118.2428011298928
+               }
+            }
+         },
+         "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/cafe-71.png",
+         "id" : "d07d3bd50f7b83da0b00e44e1b77c9076188958c",
+         "name" : "CAFÉ DULCE Dos",
+         "opening_hours" : {
+            "open_now" : false,
+            "weekday_text" : []
+         },
+         "photos" : [
+            {
+               "height" : 2949,
+               "html_attributions" : [
+                  "\u003ca href=\"https://maps.google.com/maps/contrib/103690287559983904957/photos\"\u003eQueenie Ito\u003c/a\u003e"
+               ],
+               "photo_reference" : "CmRaAAAAkgpQPzVeKGfM1eaeVPg84ma-Eav1NDWYt9CLb8iQ7esPDretGs2b6xR0mzGMH4p6twORRzzdbvTX5qTeGQmRraEv8GgNDWem4gnV_7-8GyV2ZRgVkhMQct5W6UrlLh5oEhDWqx8Xk-diz5uj5d2Euz64GhQs_6EwN9FN1tl17ukTtkVa6Qo-WA",
+               "width" : 3930
+            }
+         ],
+         "place_id" : "ChIJn0vNPibGwoARjhS8Au4ioNI",
+         "rating" : 4.6,
+         "reference" : "CmRbAAAAYjgxqrWFkmE9XeGH9aUpI7XetnzBzrgPF4j-4trayOly-P2dJYZr1e4rd-xkSrwRb2Ib87KSRkE9vxQbaj7MyFAoaK4Adf9PcB-wnBzZY9bvK9xTof6akWRBoxCjOUqmEhCszaUUgZTFjqa6nkgfwZ09GhSKmKVTINp_e2V3flAurLSk2onT4w",
+         "scope" : "GOOGLE",
+         "types" : [ "cafe", "store", "food", "point_of_interest", "establishment" ],
+         "vicinity" : "777 Alameda St #150, Los Angeles"
+      }
+   ],
+   "status" : "OK"
+}
+ 

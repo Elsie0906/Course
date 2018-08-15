@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.absolute {
+    position: relative;
+    top: 0px;
+    width: 300px;
+    height: 300px;
+    border: 3px solid #73AD21;
+    /*background-color: yellow;*/
+    z-index: 1;
+
+}
+.frame {
+    position: absolute;
+    top: 40px;
+    width: 300px;
+    height: 300px;
+    /*border: 3px solid #73AD21;*/
+    /*background-color: yellow;*/
+
+}
+.layer{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border: 3px solid #73AD21;
+    text-align: left;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    top: -300px;
+    left: 0px;
+    z-index: 2;
+}
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+.dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 2;
+}
+</style>
+<script type="text/javascript">
+
+      function initMap() {
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+
+            var latt = 37.77;
+            var long = -122.447;
+
+            var latlng = new google.maps.LatLng(latt, long);
+
+            var myOptions = {
+                zoom: 12,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map"),myOptions);
+
+            var marker = new google.maps.Marker({
+                position: latlng,
+                map: map
+            }); 
+
+            directionsDisplay.setMap(map);
+
+        document.getElementById('mode').addEventListener('click', function() {
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });                          
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var selectedMode = document.getElementById("mode").value;
+
+        console.log(selectedMode);
+
+        directionsService.route({
+          origin: {lat: 37.77, lng: -122.447},  // Haight.
+          destination: {lat: 37.768, lng: -122.511},  // Ocean Beach.
+          // Note that Javascript allows us to access the constant
+          // using square brackets and a string value as its
+          // "property."
+          travelMode: google.maps.TravelMode[selectedMode]
+        }, function(response, status) {
+          if (status == 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }   
+  function mode(id){
+        console.log(document.getElementById('mode').value);
+        //console.log(document.getElementById('mode'));
+
+        document.getElementById('mode').value = id;
+
+        console.log(document.getElementById('mode').value);
+
+  }
+</script>
+
+</head>
+<body>
+
+<table> 
+
+    <tr><td class="layer">testing00
+    <div class="frame">
+    <div id="map" class='absolute' ></div>
+        <div class="dropdown" id="mode">
+            <option class="dropbtn" id="BICYCLING" onclick="mode(this.id)">Bike</option>
+            <option class="dropbtn" id="WALKING" onclick="mode(this.id)">walk</option>
+            <option class="dropbtn" id="DRIVING" onclick="mode(this.id)">Drive</option>
+        </div> 
+    </div> 
+    </td></tr> 
+</table>
+
+
+<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBxe-zKVEPMYkWGPWKN7CcWax9KylcVpvM&callback=initMap'></script>
+</body>
+<html>

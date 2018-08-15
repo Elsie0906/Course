@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing Yelp</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
+
+    <style>
+
+    </style>
+<script>
+    //myScript = "http://cs-server.usc.edu:16651/yelp.php";
+    myScript = "yelp.php";
+    function getReview(id){
+        if(id == "Yelp Reviews"){          
+          $.ajax({
+              url: myScript,
+              type: 'get',
+              data: {
+                  name: "Los Compadres Taco Truck",
+                  city: "San Francisco",
+                  state: "CA",
+                  country: "US"
+              },
+              dataType: "json",
+              success: function(data){
+                  console.log(data);
+              },
+              error: function(err,status){
+                  console.log('Directions request failed due to ' + err + ', status: ' + status);
+              }
+          });
+        }
+    }
+</script>    
+  </head>
+<body>
+
+    <span class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Google Reviews<span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li id="Google Reviews" onclick="getReview(this.id)">Google Reviews</li>
+        <li id="Yelp Reviews" onclick="getReview(this.id)">Yelp Reviews</li>
+      </ul>
+    </span>
+
+</body>
+</html>

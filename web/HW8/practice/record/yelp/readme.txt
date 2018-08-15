@@ -1,0 +1,3 @@
+Client ID: aARpvkfVmVcPrs8bEz4qEQ
+API Key: scXl9Bo1v65vplRTRHDzqjc43BmwFjVW0xXmTE__kb-iBK1mEutT52-1EeDalVIwS4AjRUHls-YXANCrHsLfq8RrB8QorqUyNcrfzFEWVm1kIra_hgP5mHFILmLMWnYx
+App Name: yinhsiay_yelp

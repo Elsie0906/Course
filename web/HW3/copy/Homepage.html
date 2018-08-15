@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+    /* no border */
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 750px;
+}
+.background1 {
+    /* The image used */
+    background-image: url("http://cs-server.usc.edu:45678/hw/hw3/images/image6.jpg");
+
+    /* Set a specific height */
+    min-height: 400px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: -225px 40px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.background2 {
+    /* The image used */
+    background-image: url("http://cs-server.usc.edu:45678/hw/hw3/images/image5.jpg");
+
+    /* Set a specific height */
+    min-height: 305px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: 0px 120px;
+    /*width: 750px;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.foreground img{
+    position:relative;
+    width: 70%;
+    height: 70%;
+}
+.bgtext {
+    position: relative;
+}
+.bgtext:before {
+    content: "322 KeaWe Street Hilo, Hawaii 96720";
+    width: 100px;
+    position: absolute;
+    margin-top: 30px;
+    left: 50px;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.tableImg img{
+    width: 260px;
+    float: left;
+    margin-bottom: 15px;  
+    margin-top: 15px;
+}
+.des{
+    font-family: sans-serif; 
+    font-size: 10px;
+    word-spacing: 1px;
+}
+.des2{
+    font-style: italic; 
+    font-size: 18px;
+    word-spacing: 1px;
+    color: rgb(185,156,98);
+}
+tr.small{
+    line-height: 90%;
+}
+#h0{
+    padding-top: 40px; 
+    padding-bottom: 40px;       
+    font-size:48px; 
+    width: 100%;
+    text-align: center; 
+    font-family: sans-serif; 
+    letter-spacing: 5px;  
+    color: rgb(185,156,98);
+}
+#h1{
+    font-size:12px;
+    text-align:left;
+    color:white;
+    width:100%;  
+}
+#t01{
+    width: 100%;
+    border-top: 0.5px solid #d3d3d3;
+    /*border-right: 0.5px solid #d3d3d3;*/
+}
+#td01{
+    display: table-cell;
+    width: 20%;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-family: sans-serif; 
+    font-size: 12px;
+}
+#th01{
+    text-align: left;
+    font-size: 10px;
+    font-family: 
+    sans-serif;  
+}
+#a01{
+  text-decoration: none;
+  color: rgb(185,156,98); 
+}
+a.ex1:hover{
+  text-decoration: none;
+  color: #d3d3d3;  
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+</style>
+</head>
+
+<body>
+    <div class="bgtext">
+      <div id="h0">THYME</div>
+    </div>
+    <table id="t01">
+    <tr>
+      <td id="td01"><a id="a01" href="page2.html" target="_blank">Home</a></td>
+      <td id="td01"><a href="page2.html" target="_blank">Our Vision</a></td>
+      <td id="td01"><a href="page2.html" target="_blank">Menu</a></td>
+      <td id="td01"><a href="page2.html" target="_blank">Order Online</a></td>
+      <td id="td01"><a href="page2.html" target="_blank">Contact Us</a></td>
+    </tr>
+    </table> 
+  <div class="background1"></div>
+  <div class="row">
+    <div class="column">
+        <div style="margin-left: 100px; margin-top:50px;">
+          <div class="tableImg">
+            <img src="http://cs-server.usc.edu:45678/hw/hw3/images/image3.jpg">
+            <img src="http://cs-server.usc.edu:45678/hw/hw3/images/image2.jpg">
+          </div>
+          <div >
+            <table style="transform: translate(0px, 40px)">
+              <tr class="small"><td class="des2">Freshest Island</td></tr>
+              <tr class="small"><td class="des2">food from local vendors</td></tr>
+              <tr><td class="des" style="padding-top: 5px">Supporting local economy and the</td></tr>
+              <tr><td class="des">environment. Gluten-free items also</td></tr>
+              <tr><td class="des" style="padding-bottom: 5px">available.</td></tr>
+              <tr style="transform: translate(0px, 5px);"><th id="th01"><a class="ex1" href="page2.html" target="_blank">
+                Read More Here >
+              </a></th></tr>
+            </table> 
+          </div>
+        </div>
+    </div>
+    <div class="column">
+      <div style="margin-top: 20px;margin-left:15px">
+        <table>
+          <tr ><td class="des" style="padding-bottom: 5px">OUR RESTAURANT</td></tr>
+          <tr class="small"><td class="des2">Local fresh cuisine</td></tr>
+          <tr class="small"><td class="des2">for everyone</td></tr>
+          <tr><td class="des" style="padding-top: 5px">Pineapples is a family-owned and operated</td></tr>
+          <tr><td class="des">restaurant, dedicated to providing island fresh</td></tr> 
+          <tr><td class="des">cuisine to the east side of the Big Island. Our</td></tr> 
+          <tr><td class="des">restaurant is located in the historic Pineapple</td></tr> 
+          <tr><td class="des" style="padding-bottom: 5px">Building, located in the heart of downtown Hilo.</td></tr>
+          <tr style="transform: translate(0px, 5px)"><th id="th01"><a class="ex1" href="page2.html" target="_blank">
+            Read More Here >
+          </a></th></tr>
+        </table>
+        <div style="transform: translate(0px, 40px)">
+          <div class="tableImg">
+            <img src="http://cs-server.usc.edu:45678/hw/hw3/images/image1.jpg">
+            <img src="http://cs-server.usc.edu:45678/hw/hw3/images/image4.jpg">
+          </div>
+        </div>
+      </div>        
+    </div>
+  </div>
+  <div style="transform: translate(0px, 50px)"> 
+    <div class="foreground" style="transform: translate(120px, 0px)">
+      <img src="http://cs-server.usc.edu:45678/hw/hw3/images/image7.jpg">
+      <table style="transform: translate(150px, -210px);background-color: white; text-align: center; width: 200px;padding-top: 10px; padding-bottom:10px">
+        <tr><td style="font-size: 10px">GREENS JUST GOT FASTER!</td></tr>
+        <tr><td style="font-size: 18px"><a class="ex1" href="page2.html" target="_blank">Order Online</a></td></tr>
+      </table> 
+    </div>
+  </div>
+    <table style="width: 100%;text-align: center;background-color:white; padding-top:15px; padding-bottom:35px">
+      <tr><td style="font-family: sans-serif;font-size: 7px; padding-bottom: 10px">GoGreenMag.com</td></tr>
+      <tr class="small"><td class="des2">"Love it. We walked in around 6:30 without reservations</td></tr>
+      <tr class="small"><td class="des2">and were seated.</td></tr>
+      <tr class="small"><td class="des2">The coconut crusted ono was on special and perfext."</td></tr>
+    </table>
+  <div class="background2"></div>
+  <div style="width: 100%; height: 120px; background-color: rgb(185,156,98);">
+    <table style="color:white; font-size: 7px;font-family: sans-serif">
+      <tr><td style="transform: translate(500px, 25px)">&copy2017 by Pineapples Hilo Restyaurant</td></tr>
+      <tr><td style="transform: translate(500px, 25px)">pineappleshilo.com</td></tr>
+    </table>
+  </div>
+  <div style="width: 100%; height:15px; background-color: white"></div>
+</body>
+</html>

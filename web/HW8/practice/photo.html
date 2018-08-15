@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing Tabs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+    <style>
+@media (max-width: 1536px){
+    .container{
+        max-width: 576px;
+    }
+} 
+@media (max-width: 576px){
+    .container{
+        max-width: 352px;
+    }   
+}   
+.red {
+  border: solid 1px red;
+}    
+.red-star { color: red; }
+.row{
+	border:1px solid #ddd;
+	background-color: #F3F3F3;
+	margin-top: 50px;
+	padding: 20px;
+}
+
+/*
+.nav-tabs-right {
+  text-align:right;
+}
+.nav-tabs-right > li {
+  display:inline-block;
+  float:none;
+}
+*/  
+.right-tabs .nav {
+    float: right;
+    border-bottom: 0px;
+}
+.right-tabs .nav li { float: left }
+
+    </style>
+  </head>
+<body>
+
+<div class="right-tabs clearfix">
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#Info">Info</a></li>
+  <li><a data-toggle="tab" href="#Photos">Photos</a></li>
+  <li><a data-toggle="tab" href="#Map">Map</a></li>
+  <li><a data-toggle="tab" href="#Reviews">Reviews</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="Info" class="tab-pane fade in active">
+    <div class="container-fluid">
+        <table class="table table-condensed table-striped" align="center" style="border-top: 0.5px solid #d3d3d3;margin-top: 10px">
+            <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>Phone Number</th>
+                    <th>Price Level</th>
+                    <th>Rating</th>
+                    <th>Google Page</th>
+                    <th>Website</th>
+                    <th>Hours</th>
+                </tr>
+            </thead>
+            <tbody>               
+            </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

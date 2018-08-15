@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forecast Search</title>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/additional-methods.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.light.js"></script>
+  <script src='http://connect.facebook.net/en_US/all.js'></script>
+    <script>
+        //Init Facebook SDK
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '1504471799847295',
+        xfbml      : true,
+        version    : 'v2.5'
+      });
+    };
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+</head>
+<body>
+<div class="container-fluid">
+    <h1 class="head_title">Forecast Search</h1>
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="col-md-offset-1 col-md-10 col-xs-12 col-sm-12"
+         style="margin-top: 30px;">
+        <div class="col-md-12 col-xs-12 col-sm-12" style="background-color: rgba(0,0,0,0.1);">
+            <br/>
+
+            <form id="searchForm" method="get" role="form">
+                <div class="narrow_gap col-md-3 col-sm-12 col-xs-12 form-group">
+                    <label class="label_text" for="address">Street Address:<span class="red-star">*</span> </label>
+                    <input type="text" class="form-control" name="address" id="address"
+                           placeholder="Enter Street Address">
+                    <br/>
+                </div>
+                <div class="narrow_gap col-md-2 col-sm-12 col-xs-12 form-group">
+                    <label class="label_text" for="city">City:<span class="red-star">*</span> </label>
+                    <input type="text" class="form-control" name="city" id="city" placeholder="Enter the city name">
+                    <br/>
+                </div>
+                <div class="narrow_gap col-md-2 col-sm-12 col-xs-12 form-group">
+                    <label class="label_text" for="state">State:<span class="red-star">*</span> </label>
+                    <select name="state" id="state" class="form-control">
+                        <option value="">Select your state...</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District Of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                    <br/>
+                </div>
+                <div class="narrow_gap col-md-2 col-sm-12 col-xs-12 form-group">
+
+                    <label class="label_text" style="margin-top: 7px;">Degree:<span class="red-star">*</span></label>
+                    <br/>
+                    <label class="label_text" style="font-size: 12px;">
+                        <input type="radio" name="degree" id="degreeOption1" value="us" checked> Fahrenheit</input>
+                    </label>
+                    <label class="label_text" style="font-size: 12px;">
+                        <input type="radio" name="degree" id="degreeOption2" value="si"> Celsius</input>
+                    </label>
+                </div>
+                <div class="narrow_gap col-md-3 col-sm-12 col-xs-12 form-group">
+                    <div class="row"><br/></div>
+                    <div class="btn-group pull-right">
+                        <a id="searchButton" class="btn btn-primary"
+                           style="margin-right: 5px;"><span
+                                class="glyphicon glyphicon-search"></span> Search</a>
+                        <a id="clearButton" class="btn btn-default"><span
+                                class="glyphicon glyphicon-refresh"></span> Clear</a>
+                    </div>
+                    <div class="row"><br/></div>
+                    <div class="row">
+                        <label class="narrow_gap label_text col-md-offset-4 col-md-4 col-sm-offset-6 col-sm-4 col-xs-offset-3 col-xs-6 text-right"
+                               style="margin-top: 9px;">Powered by:</label>
+                        <a href="http://forecast.io"><img class=" narrow_gap img-responsive col-md-4 col-sm-2 col-xs-3" src="src/forecast_logo.png" /></a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row col-md-12 col-xs-12 col-sm-12">
+            <hr align="center" class="col-md-12 col-xs-12 col-sm-12"/>
+        </div>
+        <!-- Display for result-->
+        <div id='result' class="row col-md-12 col-xs-12 col-sm-12 none_padding_margin">
+            <ul class="nav nav-tabs none_gap" role="tablist">
+                <li role="presentation" class="active" style=" max-width: 33%;"><a href="#now" aria-controls="now"
+                                                                                   role="tab" data-toggle="tab">Right
+                    Now</a></li>
+                <li role="presentation" style=" max-width: 33%;"><a href="#hours" aria-controls="hours" role="tab"
+                                                                    data-toggle="tab">Next 24
+                    Hours</a></li>
+                <li role="presentation" style="max-width: 33%;"><a href="#days" aria-controls="days" role="tab"
+                                                                   data-toggle="tab">Next 7
+                    Days</a></li>
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="now">
+                    <div id="now_weather" class="col-md-6 col-xs-12 col-sm-12 none_gap">
+                        <div id="now_head" class="col-md-12 col-xs-12 col-sm-12 none_gap"
+                             style="background-color: #D16565;">
+                            <div class="col-md-6 col-xs-12 col-sm-6">
+                                <img class="col-md-offset-2 col-md-8 col-sm-offset-4 col-sm-4 col-xs-offset-4 col-xs-4"
+                                     id="now_icon" style="padding-bottom: 10px;padding-top: 10px;"/>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label id="now_summary_text" class="col-md-12 col-sm-12 col-xs-12"
+                                       style="text-align: center;color: white;">N/A</label>
+                                <label class="col-md-12 col-sm-12 col-xs-12"
+                                       style="text-align: center;color: white;">
+                                    <span id="now_summary_tmp" style="color: white;font-size: 60px;">N/A</span>
+                                    <span id="now_summary_degree" class="pull-up"
+                                          style="color: white;font-size: 12px;">N/A</span>
+                                </label>
+                                <label class="col-md-offset-1 col-md-10 col-sm-offset-1 col-sm-10 col-xs-offset-1 col-xs-10"
+                                       style="text-align: center;">
+                                    <span id="now_summary_tmpMin" style="color: blue;font-size: 12px;">N/A</span>
+                                    <span>|</span>
+                                    <span id="now_summary_tmpMax" style="color: green;font-size: 12px;">N/A</span>
+                                </label>
+
+                                <div class="col-md-1 col-sm-1 col-xs-1 img-responsive none_gap">
+                                    <a href="javascript:shareFB()">
+                    <img class="img-responsive" src="src/fb_icon.png" 
+                    style="height:20px;width:20px;"/>
+                  </a>
+                                </div>
+                            </div>
+                        </div>
+                        <table style="margin-bottom: 0px;" id="now_table" class="table table-striped">
+                            <tr style="text-align: left;">
+                                <td>Precipitation</td>
+                                <td id="now_precipitation">N/A</td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td>Chance of Rain</td>
+                                <td id="now_rain">N/A</td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td>Wind Speed</td>
+                                <td id="now_wind">N/A</td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td>Dew Point</td>
+                                <td id="now_dew">N/A</td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td>Humidity</td>
+                                <td id="now_humidity">N/A</td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td>Visibility</td>
+                                <td id="now_visb">N/A</td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td>Sunrise</td>
+                                <td id="now_sunrise">N/A</td>
+                            </tr>
+                            <tr style="text-align: left;">
+                                <td>Sunset</td>
+                                <td id="now_sunset">N/A</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="map" class="col-md-6 col-xs-12 col-sm-12 none_gap"></div>
+                </div>
+                <div role="tabpanel" style="overflow-x: auto;" class="tab-pane fade" id="hours">
+                    <table class="table">
+                        <thead class="thead_hour">
+                        <tr>
+                            <th>Time</th>
+                            <th>Summary</th>
+                            <th>Cloud Cover</th>
+                            <th id="hour_temp_units">Temp(&deg;)</th>
+                            <th>View Detail</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbody_hour" class="tbody_hour">
+
+                        </tbody>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="days">
+                    <div class="col-md-12 col-xs-12 col-sm 12" id="days_content">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<script type="text/javascript">
+    "use strict";
+    var map = null;
+    var icon = null;
+    var weather_status = null;
+    var weather_temp = null;
+    $(document).ready(function () {
+        $('#result').hide();
+        var data;
+        $.validator.addMethod("addressCheck", function (value, element) {
+            return /\S/.test(value);
+        }, "Cannot contains only whitespace");
+        $('#searchForm').validate({
+            rules: {
+                address: {
+                    required: true,
+                    addressCheck: true
+                },
+                city: {
+                    required: true,
+                    addressCheck: true
+                },
+                state: {
+                    required: true
+                }
+            },
+            messages: {
+                address: {
+                    required: "Please enter the street address",
+                    addressCheck: "Please enter the street address"
+                },
+                city: {
+                    required: "Please enter the city",
+                    addressCheck: "Please enter the city"
+                },
+                state: {
+                    required: "Please select a state"
+                }
+            },
+        });
+        $('#searchButton').on('click', function () {
+            if ($('#searchForm').valid()) {
+                var url = 'http://571hw8-shurui-env.elasticbeanstalk.com/?';
+                var param = $('#searchForm').serialize();
+        console.log(param);
+                $.ajax({
+                    url: url,
+                    data: param,
+                    type: 'GET',
+                    success: function (obj) {
+                        obj = JSON.parse(obj);
+                        if (obj.hasError === false) {
+                            data = obj.data;
+                            parse(data);
+                            $('#result').show();
+                            buildMap(data.lat, data.lng);
+                        }
+                    }
+                });
+            }
+        });
+        $('#clearButton').on('click', function () {
+            $('#searchForm').validate().resetForm();
+            $('#result').hide();
+            data = {};
+            clearForm();
+        });
+    });
+    $(window).on('resize', function () {
+        redrawMap();
+    });
+    function shareFB() {
+        FB.getLoginStatus(function (response) {
+            if (response.status === 'connected') {
+        console.log('connected');
+                postFB();
+            } else {
+                // the user isn't logged in to Facebook.
+                FB.login(function (response) {
+                    if (response.status === 'connected') {
+                        postFB();
+                    } else {
+                        alert('Not Posted');
+                    }
+                });
+            }
+        });
+    }
+  
+    function postFB() {
+        FB.ui({
+            method: 'feed',
+            name: 'Current Weather in ' + $('#city').val() + ' , ' + $('#state').val(),
+            link: 'http://forecast.io/',
+            picture: 'http://cs-server.usc.edu:14688/forecast/src/' + icon,
+            description: weather_status + ', ' + weather_temp,
+            caption:'WEATHER INFORMATION FROM FORECAST.IO',
+            display: 'popup'
+        }, function (response) {
+            if (response && !response.error_message) {
+                alert('Posted Successfully');
+            } else {
+                alert('Not Posted');
+            }
+        });
+    }
+  
+    function redrawMap() {
+        var h1 = $('#now_weather').height();
+        if (h1 === 0) return;
+        $('#map').css({
+            height: h1
+        });
+    }
+  
+    function parse(data) {
+        icon = data.currently.icon;
+        weather_status = data.currently.summary;
+        weather_temp = data.currently.temperature;
+        $('#now_icon').attr("src", "src/" + data.currently.icon);
+        $('#now_summary_text').text(data.currently.summary + ' in ' + $('#city').val() + ', ' + $('#state').val());
+        $('#now_summary_tmp').html(data.currently.temperature);
+        $('#now_summary_degree').html(data.units.temperature_unit);
+        $('#now_summary_tmpMin').html('L:' + data.currently.temperatureMin);
+        $('#now_summary_tmpMax').html('H:' + data.currently.temperatureMax);
+        $('#now_precipitation').html(data.currently.precipIntensity);
+        $('#now_rain').html(data.currently.precipProbability);
+        $('#now_wind').html(data.currently.windSpeed);
+        $('#now_dew').html(data.currently.dewPoint);
+        $('#now_visb').html(data.currently.visibility);
+        $('#now_humidity').html(data.currently.humidity);
+        $('#now_sunrise').html(data.currently.sunriseTime);
+        $('#now_sunset').html(data.currently.sunsetTime);
+        $('#hour_temp_units').html("Temp(" + data.units.temperature_unit + ")");
+        var content = "";
+        var hourly = data.hourly.data;
+        content += '<tr><td colspan="5"/></tr>';
+        for (var i = 0; i < 24; i++) {
+            content += '<tr>';
+            content += '<td>' + hourly[i].time + '</td>';
+            content += '<td><img style="height:45px;" src="src/' + hourly[i].summary + '"/></td>';
+            content += '<td>' + hourly[i].cloudCover + '</td>';
+            content += '<td>' + hourly[i].temp + '</td>';
+            content += '<td><span type="button" data-toggle="collapse" data-target="#data' + i + '" class="btn glyphicon glyphicon-plus" style="color: #4C70A8;padding-top: 0px;"/>' + '</td>';
+            content += '</tr>';
+            content += '<tr style="background-color:#F3F3F3;" class="collapse" id="data' + i + '">' + '<td colspan="5">'
+            content += '<table class="table table_hour_collapse" ><thead"><tr><th>Wind</th><th>Humidity</th><th>Visibility</th><th>Pressure</th></tr></thead>';
+            content += '<tbody><tr><td>' + hourly[i].wind + '</td><td>' + hourly[i].humidity + '</td><td>' + hourly[i].visibility + '</td><td>' + hourly[i].pressure + '</td></tr></tbody></table></td></tr>';
+        }
+        $('#tbody_hour').html(content);
+        var day_content = '';
+        var daily = data.daily.data;
+        var colors = ['#517CB5', '#CD4840', '#D38D4E', '#A5A43C', '#846837', '#AB6263', '#A03E62'];
+        for (var i = 1; i <= 7; i++) {
+            if (i == 1) {
+                day_content += '<button class="btn-day btn col-md-offset-2 col-md-1 col-sm-12 col-xs-12" style="background-color: ' + colors[i - 1] + '"data-toggle="modal" data-target="#dayData' + i + '">';
+            } else {
+                day_content += '<button class="btn-day btn btn-non-primary col-md-1 col-sm-12 col-xs-12" style="background-color: ' + colors[i - 1] + '"data-toggle="modal" data-target="#dayData' + i + '">';
+            }
+            day_content += '<span>' + daily[i].day + '</span></br></br>';
+            day_content += '<span>' + daily[i].mDate + '</span></br>';
+            day_content += '<img style="width:50px;height:50px;" src="src/' + daily[i].icon + '"></img></br>';
+            day_content += '<span>' + 'Min' + '</span></br>';
+            day_content += '<span>' + 'Temp' + '</span></br>';
+            day_content += '<span style="font-size: 32px;">' + daily[i].temperatureMin + '</span></br></br>';
+            day_content += '<span>' + 'Max' + '</span></br>';
+            day_content += '<span>' + 'Temp' + '</span></br></br>';
+            day_content += '<span style="font-size: 32px;">' + daily[i].temperatureMax + '</span></br>';
+            day_content += '</button>';
+            day_content += '<div id="dayData' + i + '" class="modal fade" role="dialog"><div class="modal-dialog"><div class="modal-content"><div style="background-color: white;" class="col-md-12 col-xs-12 col-sm-12 modal-header">';
+            day_content += '<button type="button" class="close" data-dismiss="modal">&times;</button>';
+            var title = 'Weather in ' + $('#city').val() + ' on ' + daily[i].mDate;
+            day_content += '<h4 class="modal-title">' + title + '</h4></div> <div style="text-align: center;background-color: white;" class="col-md-12 col-xs-12 col-sm-12 modal-body">';
+            day_content += '<img style="width:100px;height:100px;" src="src/' + daily[i].icon + '"/>';
+            day_content += '<div style="margin-bottom:10px;"class="col-md-12 col-sm-12 col-xs-12"><span style="font-size: 24px;color:black;"><b>' + daily[i].day + ':</b></span><span style="font-size: 24px;color:yellow;"><b>' + daily[i].summary + '</b></span></div>';
+            day_content += '<div class="col-md-4 col-sm-12  col-xs-12"><span style="font-size: 16px;"><b>Sunrise Time</b></span></br><span>' + daily[i].sunriseTime + '</span></div>';
+            day_content += '<div class="col-md-4 col-sm-12  col-xs-12"><span style="font-size: 16px;"><b>Sunset Time</b></span></br><span>' + daily[i].sunsetTime + '</span></div>';
+            day_content += '<div class="col-md-4 col-sm-12  col-xs-12"><span style="font-size: 16px;"><b>Humidity</b></span></br><span>' + daily[i].humidity + '</span></div>';
+            day_content += '<div class="col-md-4 col-sm-12  col-xs-12"><span style="font-size: 16px;"><b>Wind Speed</b></span></br><span>' + daily[i].wind + '</span></div>';
+            day_content += '<div class="col-md-4 col-sm-12  col-xs-12"><span style="font-size: 16px;"><b>Visibility</b></span></br><span>' + daily[i].visibility + '</span></div>';
+            day_content += '<div class="col-md-4 col-sm-12  col-xs-12"><span style="font-size: 16px;"><b>Pressure</b></span></br><span>' + daily[i].pressure + '</span></div>';
+            day_content += '</div> <div style="background-color: white;" class=" col-md-12 col-xs-12 col-sm-12 modal-footer"> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> </div> </div></div></div>';
+        }
+        $('#days_content').html(day_content);
+    }
+  
+    function buildMap(x, y) {
+        //TODO Put the map working
+        var h1 = $('#now_weather').height();
+        if (h1 != 0) {
+            $('#map').css({
+                height: h1
+            });
+        }
+        if (map === null) {
+            map = new OpenLayers.Map('map')
+            var layer_cloud = new OpenLayers.Layer.XYZ(
+                    "clouds",
+                    "http://${s}.tile.openweathermap.org/map/clouds/${z}/${x}/${y}.png",
+                    {
+                        isBaseLayer: false,
+                        opacity: 0.5,
+                        sphericalMercator: true
+                    }
+            );
+            var layer_precipitation = new OpenLayers.Layer.XYZ(
+                    "precipitation",
+                    "http://${s}.tile.openweathermap.org/map/precipitation/${z}/${x}/${y}.png",
+                    {
+                        isBaseLayer: false,
+                        opacity: 0.7,
+                        sphericalMercator: true
+                    }
+            );
+            map.addLayers([new OpenLayers.Layer.OSM(), layer_precipitation, layer_cloud]);
+            var lonLat = new OpenLayers.LonLat(y[0], x[0])
+                    .transform(
+                    new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                    new OpenLayers.Projection("EPSG:900913") // to Spherical Mercator Projection
+            );
+            var zoom = 9;
+            map.setCenter(lonLat, zoom);
+        } else {
+            var lonLat = new OpenLayers.LonLat(y[0], x[0])
+                    .transform(
+                    new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                    new OpenLayers.Projection("EPSG:900913") // to Spherical Mercator Projection
+            );
+            var zoom = 9;
+            map.setCenter(lonLat, zoom);
+        }
+    }
+  
+    function clearForm() {
+        document.getElementById("address").value = "";
+        document.getElementById("city").value = "";
+        document.getElementById("state").selectedIndex = "";
+        document.getElementById("degreeOption1").checked = true;
+    }
+  
+    function parseNA() {
+        //TODO Set all to N/A
+    }
+</script>
+</body>
+</html>

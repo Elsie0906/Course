@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../HW9.iml" filepath="$PROJECT_DIR$/../HW9.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../glide-volley-integration-4.7.0/glide-volley-integration-4.7.0.iml" filepath="$PROJECT_DIR$/../glide-volley-integration-4.7.0/glide-volley-integration-4.7.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../volley/volley.iml" filepath="$PROJECT_DIR$/../volley/volley.iml" />
+    </modules>
+  </component>
+</project>

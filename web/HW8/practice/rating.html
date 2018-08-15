@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Testing Tabs</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css" rel="stylesheet"/>
+
+    <style>
+@media (max-width: 1536px){
+    .container{
+        max-width: 576px;
+    }
+} 
+@media (max-width: 576px){
+    .container{
+        max-width: 352px;
+    }   
+}   
+.red {
+  border: solid 1px red;
+}    
+.red-star { color: red; }
+.row{
+	border:1px solid #ddd;
+	background-color: #F3F3F3;
+	margin-top: 50px;
+	padding: 20px;
+}
+
+/*
+.nav-tabs-right {
+  text-align:right;
+}
+.nav-tabs-right > li {
+  display:inline-block;
+  float:none;
+}
+*/  
+.right-tabs .nav {
+    float: right;
+    border-bottom: 0px;
+}
+.right-tabs .nav li { float: left }
+
+    </style>
+<script>
+$( function(){
+
+  $(".rateyo").rateYo().on("rateyo.change", function (e, data) {
+    var rating = data.rating;
+    $(this).parent().find('.result').text('rating :'+ rating);
+   });
+
+});
+
+    $( function(id,data){
+        console.log(id);
+        $(id).rateYo({
+            starWidth: "10px",
+            rating    : data.rating
+        });
+    }); 
+</script>    
+  </head>
+<body>
+
+<div>
+    <div class="rateyo" data-rateyo-rating="2.5" data-rateyo-num-stars="5"></div>
+    <span class='result'></span>
+</div>
+
+    <div>
+      <span style='display:inline-block;'>label1</span><span id='goo1' data-rateyo-rating="2.5" data-rateyo-num-stars="5"></span>
+    </div>
+    <div>
+      <span style='display:inline-block;'>label2</span><span id='goo2' data-rateyo-rating="4" data-rateyo-num-stars="5"></span>
+    </div>    
+</body>
+</html>

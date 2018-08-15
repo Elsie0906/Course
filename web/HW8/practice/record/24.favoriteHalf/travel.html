@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>CSCI571_HW8</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+        <!-- Include all compiled plugins (below), orinclude individual files as needed -->
+        <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>        
+    </head>
+    <body ng-app=""> 
+        <!-- inject:js -->
+
+        <script src="jQuery.js"></script>
+
+        <form name="myForm" id="searchForm" ng-cloak>  
+        <div class="container">
+        <div class="row">
+
+            <div class="form-group">
+                <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+                    <h4>Travel and Entertainment Search</h4>
+                </div>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Keyword<span class="red-star">*</span></div>
+            <div class="form-group">
+                <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+                    <input type="text" name="keyword" class="form-control" ng-model="keyword" ng-pattern=" " ng-class="{redInvalid: myForm.keyword.$touched && myForm.keyword.$invalid}" id="keyword" required><br>
+                    <span ng-show="(myForm.keyword.$touched && myForm.keyword.$invalid) || (myForm.keyword.$error.pattern)" style="color: red;">Please enter a keyword</span>
+                </div>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Category</div>
+            <div class="form-group">                
+                <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+                <select id="category" name="category">
+                <option value="Default">Default</option>
+                <option value="Airport">Airport</option>
+                <option value="Amusement Park">Amusement Park</option>
+                <option value="Aquarium">Aquarium</option>   
+                <option value="Art Gallery">Art Gallery</option>
+                <option value="Backery">Backery</option>
+                <option value="Bar">Bar</option>  
+                <option value="Beauty Salon">Beauty Salon</option>
+                <option value="Bowling Allery">Bowling Allery</option>
+                <option value="Bus Station">Bus Station</option>
+                <option value="Cafe">Cafe</option>   
+                <option value="Campground">Campground</option>  
+                <option value="Car Rental">Car Rental</option>
+                <option value="Casino">Casino</option>
+                <option value="Lodging">Lodging</option>
+                <option value="Movie Theater">Movie Theater</option>   
+                <option value="Museum">Museum</option>
+                <option value="Night Club">Night Club</option>
+                <option value="Park">Park</option>  
+                <option value="Parking">Parking</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Shopping Mall">Shopping Mall</option>
+                <option value="Stadium">Stadium</option>   
+                <option value="Subway Station">Subway Station</option>
+                <option value="Taxi Stand">Taxi Stand</option>   
+                <option value="Train Station">Train Station</option>  
+                <option value="Transit Station">Transit Station</option>
+                <option value="Travel Agency">Travel Agency</option>
+                <option value="Zoo">Zoo</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Distance (miles)</div>
+            <div class="form-group">
+                <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+                    <input type="text" placeholder="10" id="distance" name="distance">
+                </div>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">From<span class="red-star">*</span></div>
+            <div class="form-group">
+                <div class="radio">
+                <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+                    <label><input type="radio" id="optionHere" name="optradio" value="Here" checked>Current location</label>
+                </div>
+                </div>
+            </div>             
+
+            <div class="form-group">
+                <div class="radio">
+                <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-lg-offset-4">
+                    <label><input type="radio" id="optionOther" name="optradio" value="Other">Other. Please specify:</label>
+                </div>
+                </div>
+            </div> 
+
+            <div class="form-group" id="location">
+                <label class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></label>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <input type="text" id="locationTextField" name="location" placeholder="Enter a location" class="form-control" ng-model="location" ng-pattern=" " ng-class="{red: myForm.location.$touched && myForm.location.$invalid}" disabled required><br>
+                    <span ng-show="(myForm.location.$touched && myForm.location.$invalid) || (myForm.location.$error.pattern)" style="color: red;">Please enter a location</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <button type="button" class="btn btn-default" onclick='clearResult()'>
+                    <span class="glyphicon"></span> Clear
+                </button>
+            </div>            
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"></div>
+            </div>
+                     
+        </div>
+        </div>
+        </form>
+
+        <div class="text-center" style="margin-top: 10px">
+            <button type="button" class="btn btn-primary" onclick='showMeResultTable()' id='resultTab'>Results</button>
+            <button type="button" class="btn" style="color: #006dcc" onclick='showMeFavorite()' id='favorTab'>Favorites</button> 
+        </div>
+        
+        <div id='demo'></div>
+        <div class="progress" id="loader" style="margin-top: 10px" hidden>
+              <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%" id="bar"></div>
+        </div>    
+
+    </body>
+</html>

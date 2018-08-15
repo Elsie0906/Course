@@ -1,0 +1,148 @@
+<html>
+  <head>
+    <title>View Truck</title>
+    <style>
+      ul{
+        list-style-type: circle;
+      }
+    </style>
+    <script>
+    function generateHTML(jsonObj)
+    {  
+        
+        //root=jsonObj.DocumentElement;
+        // output the headers
+
+        html_text="<html><head><title>Top Trucking Companies</title></head><body>";
+        html_text+="<table border='2'>";
+        html_text+="<tbody>";
+        html_text+="<tr>";
+        var header_keys = jsonObj.Mainline.Table.Header.Data; 
+        
+        for(i=0;i<header_keys.length;i++)
+        {  
+            header=header_keys[i];
+            html_text+="<th>"+header+"</th>";    
+        }
+
+        var company = jsonObj.Mainline.Table.Row;
+
+        if( company == null){         //  err01: does not contain trucking company entries
+            html_text+="</tbody>";  
+            html_text+="</table>";
+            html_text+="<h1><font color='red'>no data for trucking company</h1>";
+        }
+        else
+        {
+            for(i=0;i<company.length; i++){
+                compNodeList = company[i];
+                html_text+="<tr>"; 
+                var comp_keys = Object.keys(compNodeList);
+                for(j=0; j<comp_keys.length; j++){
+                    prop = comp_keys[j];
+
+                    if(compNodeList[prop] == null){                   // err02: the value of a tag is empty
+                        html_text+="<td></td>";
+                        continue;
+                    }
+
+                    if(comp_keys[j]=="Logo"){
+                        html_text+="<td><img src='"+ compNodeList[prop] + "' width='" +  200 + "' height='" + 100 + "'></td>";
+                    }
+                    else if(comp_keys[j]=="HomePage"){
+                        var txt = compNodeList[prop];
+                        html_text+="<td><a href='" + txt + "'>" + txt + "</td>";
+                    }
+                    else if(comp_keys[j]=="Hubs"){
+                        var hub = compNodeList[prop].Hub;
+
+                        if(hub.length == 0 || hub[0] == null){        // err02: the value of a tag is empty
+                            html_text+="<td></td>";
+                            continue;                            
+                        }
+                        html_text+="<td><ul>";
+                        html_text+="<li><b>" + hub[0] + "</b></li>";
+                        for(z=1; z<hub.length; z++){
+                            if(hub[z] == null){                       // err02: the value of a tag is empty
+                              continue;                              
+                            }
+                            html_text+= "<li>" + hub[z] + "</li>";
+                        }
+                        html_text+="</ul></td>";
+                    }
+                    else{
+                            html_text+="<td>"+ compNodeList[prop] +"</td>";
+                    }
+                }
+                html_text+="</tr>"; 
+            }
+            html_text+="</tbody>";  
+            html_text+="</table>";                      
+        }
+
+        html_text+="</body></html>"; 
+    }
+    function viewJSON(what)
+    {
+        var URL = what.URL.value;
+
+        function loadJSON(url) {          
+          if (window.XMLHttpRequest){     // code for IE7+, Firefox, Chrome, Opera, Safari
+              xmlhttp=new XMLHttpRequest();   
+          }
+          else {                          // code for IE6, IE5
+              xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");  
+          }
+          xmlhttp.open("GET",url,false);  // synchronize
+
+          try
+          {
+              xmlhttp.send(); 
+              jsonObj= JSON.parse(xmlhttp.responseText);
+              return jsonObj; 
+          }
+          catch(NetworkError){            // err00: file does not exist!!
+              hWin = window.open("", "Error", "height=400,width=600");
+              hWin.document.write("<html><head><title>Error</title></head><body>");
+              hWin.document.write("<h1>Sorry</h1>");
+              hWin.document.write("<h1>404 - <I>");
+              hWin.document.write(url);
+              hWin.document.write("</I> cannot be found</h1>");
+              hWin.document.write("</body></html>");
+              hWin.document.close(); 
+          }  
+        }
+
+        jsonObj = loadJSON(URL);
+
+        if (window.ActiveXObject){ //if IE, simply execute script (due to async prop).
+          if (jsonObj.parseError.errorCode != 0) {
+              var myErr = jsonObj.parseError;
+              generateError(jsonObj);
+              hWin = window.open("", "Error", "height=300,width=340");
+              hWin.document.write(html_text);
+          } else {  
+              generateHTML(jsonObj);
+              hWin = window.open("", "Assignment4", "height=800,width=1100");
+              hWin.document.write(html_text);   
+          }
+        } else{ //else if FF, execute script once JSON object has loaded  
+          jsonObj.onload=generateHTML(jsonObj);
+          hWin = window.open("", "Assignment4", "height=800,width=1100");
+          hWin.document.write(html_text);  
+        }
+          hWin.document.close();  
+    }   
+    </script>
+  </head>
+  <body>
+    <div style="text-align: center">
+    <h2>Enter URL for Trucking List JSON File</h2>
+    <form name="myform" method="POST" id="location">
+    <input type="text" name="URL" maxlength="100" size="30" value="error.json">
+    <br><br>
+    <input type="button" name="submit" value="Submit Query" onclick="viewJSON(this.form)">
+    </form>
+    </div>
+  </body>
+</html>

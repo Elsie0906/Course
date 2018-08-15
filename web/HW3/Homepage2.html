@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.background1 {
+    /* The image used */
+    background-image: url("http://cs-server.usc.edu:45678/hw/hw3/images/image6.jpg");
+
+    /* Set a specific height */
+    min-height: 400px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: -225px 10px;
+    width: 750px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.background2 {
+    /* The image used */
+    background-image: url("http://cs-server.usc.edu:45678/hw/hw3/images/image5.jpg");
+
+    /* Set a specific height */
+    min-height: 300px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: 0px 100px;
+    width: 750px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.foreground img{
+	width: 70%;
+	height: 70%;
+}
+table#t01 td{
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+	float: left;
+    width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.tableImg img{
+	width: 300px;
+	height: 60%;
+	float: left;
+	margin-bottom: 20px;	
+	margin-top: 20px;
+}
+table#t01{
+	width: 100%;
+}
+.des{
+	font-family: sans-serif; 
+	font-size: 14px;
+	width: 300px;
+	word-spacing: 1px;
+	line-height: 1.5;	
+}
+.des2{
+	font-family: italic;
+	font-size: 28px;
+	width: 250px;
+	word-spacing: 1px;
+}
+#rectangle{
+  width: 750px;
+  height: 140px;
+  background-color: rgb(185,156,98);
+}
+#h0{
+  font-size:48px; 
+  text-align: center; 
+  padding-top: 30px; 
+  padding-bottom: 30px; 
+  font-family: sans-serif; 
+  letter-spacing: 5px;  
+}
+#h1{
+  font-size:12px;
+  text-align:left;
+  color:white;  
+}
+</style>
+</head>
+<body>
+
+<div id="h0">THYME</div>
+<table id="t01">
+	<tr>
+		<td></td>
+		<td>Home</td>
+		<td>Our Vision</td>
+		<td>Menu</td>
+		<td>Order Online</td>
+		<td>Contact Us</td>
+		<td></td>
+	</tr>
+</table>
+<div class="background1"></div>
+<!--<div class="background2" style="transform: scale(0.99,0.99);"></div>-->
+<div class="row">
+  <div class="column">
+  	<div style="margin-left: 50px; margin-top:80px;">
+  		<div class="tableImg">
+  			<img src="http://cs-server.usc.edu:45678/hw/hw3/images/image3.jpg">
+  			<img src="http://cs-server.usc.edu:45678/hw/hw3/images/image2.jpg">
+  		</div>
+  		<div  style="transform: translate(0px, 50px)">
+  			<div class="des2">
+  				<p><I>Freshest Island food from local vendors</I></p>
+  			</div>
+  			<div class="des">
+  				<p>Supporting local economy and the environment. Gluten-free items also available.</p>
+  			</div>
+  		</div>
+	</div>	
+  </div>
+  <div class="column">
+  	<div class="des">
+  		<p>OUR RESTAURANT</p>
+  	</div>
+  	<div class="des2">
+  		<p><I>Local fresh cuisine for everyone</I></p>
+  	</div>	
+  	<div class="des">
+  		<p>
+  			Pineapples is a family-owned and operated restaurant, dedicated to providing island fresh cuisine to the east side of the Big Island. Our restaurant is located in the historic Pineapple Building, located in the heart of downtown Hilo.
+  		</p>
+  	</div>	
+  	<div class="tableImg" style="margin-top: 30px">
+  		<img src="http://cs-server.usc.edu:45678/hw/hw3/images/image1.jpg">
+  		<img src="http://cs-server.usc.edu:45678/hw/hw3/images/image4.jpg">
+  	</div>	
+  </div>
+</div>
+
+<div class="foreground" style="transform: translate(100px, 0px)">
+	<img src="http://cs-server.usc.edu:45678/hw/hw3/images/image7.jpg">
+</div>
+<div style="text-align: center; font-family: italic;font-size: 28px;">
+	<p><I>"Love it. We walked in around 6:30 without reservations and were seated. The coconut crusted ono was on special and perfext."</I></p>
+</div>
+<p id="p5"></p>
+<div class="background2"></div>
+<div id="rectangle">
+  <h id="h1">&copy2017 by Pineapples Hilo Restyaurant pineappleshilo.com</h>
+</div>
+</body>
+</html>
