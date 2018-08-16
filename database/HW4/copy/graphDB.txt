@@ -1,0 +1,45 @@
+Q1:
+graph = TinkerGraph.open();
+g = graph.traversal();
+v1 = g.addV("course").property(id, 1).property("name", "cs101").next();
+v2 = g.addV("course").property(id, 2).property("name", "cs201").next();
+g.addE("pre-req").from(v2).to(v1).property(id, 9);
+v3 = g.addV("course").property(id, 3).property("name", "cs220").next();
+g.addE("pre-req").from(v3).to(v2).property(id, 10);
+v4 = g.addV("course").property(id, 4).property("name", "cs334").next();
+g.addE("pre-req").from(v4).to(v2).property(id, 11);
+v5 = g.addV("course").property(id, 5).property("name", "cs420").next();
+g.addE("pre-req").from(v5).to(v3).property(id, 12);
+g.addE("co-req").from(v5).to(v3).property(id, 13);
+v6 = g.addV("course").property(id, 6).property("name", "cs681").next();
+g.addE("pre-req").from(v6).to(v4).property(id, 14);
+v7 = g.addV("course").property(id, 7).property("name", "cs400").next();
+g.addE("pre-req").from(v7).to(v4).property(id, 15);
+v8 = g.addV("course").property(id, 8).property("name", "cs526").next();
+g.addE("pre-req").from(v8).to(v7).property(id, 16);
+g.addE("co-req").from(v8).to(v7).property(id, 17);
+
+Q2:
+g.V().as('a').out('co-req').as('b').select('a','b').by('name')
+
+Q3:
+
+g.V().has('name','cs526').repeat(out('pre-req')).emit().until(outE().count().is(0)).values('name')
+
+combination?
+1. repeat() -> do-while
+2. The emit() comes after repeat() and thus, emission happens after the repeat() traversal is executed
+// inncorrect!!
+g.V().has('name','cs526').out('pre-req').repeat(out('pre-req')).until(outE().count().is(0)).path().by('name').unfold()
+// inncorrect!! Need to exclude the first 
+
+Q4:
+
+g.V().has('name','cs101').repeat(__.in('pre-req')).emit().path().count(local).max()
+
+/*
+The traversals shown above are fairly straightforward. The traversal beings at a particlar starting vertex, traverse in on the "hasParent" edges emitting all vertices as it goes. It calculates the path length and then selects the longest one.
+*/
+// incorrect!!
+g.V().has('name','cs101').emit().repeat(inE('pre-req').outV()).until(inE().count().is(0)).path().count(local).max()
+g.V().has('name','cs101').emit().repeat(in('pre-req')).until(inE().count().is(0)).path().count(local).max()

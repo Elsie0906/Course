@@ -1,0 +1,19 @@
+CREATE DATABASE test;
+USE test;
+CREATE TABLE NearestNeighbor(gid int AUTO_INCREMENT, geoLoc GEOMETRY, PRIMARY KEY(gid));
+INSERT into NearestNeighbor(geoLoc) values (ST_GeomFromText('POINT(-118.2947 34.0652)'));
+INSERT into NearestNeighbor(geoLoc) values (ST_GeomFromText('POINT(-118.2864 34.0201)'));
+INSERT into NearestNeighbor(geoLoc) values (ST_GeomFromText('POINT(-118.2845 34.0216)'));
+INSERT into NearestNeighbor(geoLoc) values (ST_GeomFromText('POINT(-118.2891 34.0210)'));
+INSERT into NearestNeighbor(geoLoc) values (ST_GeomFromText('POINT(-118.2803 34.0218)'));
+INSERT into NearestNeighbor(geoLoc) values (ST_GeomFromText('POINT(-118.2913 34.0252)'));
+INSERT into NearestNeighbor(geoLoc) values (ST_GeomFromText('POINT(-118.2912 34.0184)'));
+INSERT into NearestNeighbor(geoLoc) values (ST_GeomFromText('POINT(-118.2846 34.0220)'));
+INSERT into NearestNeighbor(geoLoc) values (ST_GeomFromText('POINT(-118.2839 34.0180)'));
+
+SELECT g1.gid As gref_gid, ST_AsText(g1.geoLoc) As gref_description, 
+g2.gid As gnn_gid, ST_AsText(g2.geoLoc) As gnn_description, ST_Distance(g1.geoLoc,g2.geoLoc) As d
+ FROM NearestNeighbor As g1, NearestNeighbor As g2   
+WHERE g1.gid = 1 and g1.gid <> g2.gid  
+ORDER BY ST_Distance(g1.geoLoc,g2.geoLoc) 
+LIMIT 3;

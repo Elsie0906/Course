@@ -1,0 +1,56 @@
+Q1: Create an empty graph for traversal, and add to it, vertices and edges
+
+Ans:
+g = TinkerGraph.open().traversal();
+g.addV("course").property(id, 1).property("name", "cs101").as('v1').addV("course").property(id, 2).property("name", "cs201").as('v2').addV("course").property(id, 3).property("name", "cs220").as('v3').addV("course").property(id, 4).property("name", "cs334").as('v4').addV("course").property(id, 5).property("name", "cs420").as('v5').addV("course").property(id, 6).property("name", "cs681").as('v6').addV("course").property(id, 7).property("name", "cs400").as('v7').addV("course").property(id, 8).property("name", "cs526").as('v8').addE("pre-req").from('v2').to('v1').property(id, 9).addE("pre-req").from('v3').to('v2').property(id, 10).addE("pre-req").from('v4').to('v2').property(id, 11).addE("pre-req").from('v5').to('v3').property(id, 12).addE("co-req").from('v5').to('v3').property(id, 13).addE("pre-req").from('v6').to('v4').property(id, 14).addE("pre-req").from('v7').to('v4').property(id, 15).addE("pre-req").from('v8').to('v7').property(id, 16).addE("co-req").from('v8').to('v7').property(id, 17);
+
+
+Explaination:
+/* TinkerGraph is an API provided by TinkerPop to create graph */
+(1) TinkerGraph.open(): Open a new TinkerGraph instance. In the beginning the graph structure has 0 edges and 0 vertices
+(2) traversal(): Generate  TraversalSource g; ask Gremlin to traverse the Graph
+(3) addV(): a vertex is created and add it to the graph
+(4) addE(): add edge to the graph
+ps.
+multi-line cmd:
+v1 = g.addV("course").property(id, 1).property("name", "cs101").next();
+v2 = g.addV("course").property(id, 2).property("name", "cs201").next();
+g.addE("pre-req").from(v2).to(v1).property(id, 9);
+
+single-line cmd:
+g.addV("course").property(id, 1).property("name", "cs101").as('v1').addV("course").property(id, 2).property("name", "cs201").as('v2').addE("pre-req").from('v2').to('v1').property(id, 9)
+
+
+
+Q2: Write a query that will output JUST the doubly-connected nodes
+
+Ans:
+g.V().as('a').out('co-req').as('b').select('a','b').by('name')
+
+Explaination:
+(1) V(): list all vertices in the graph
+(2) as(): provide a label to the step that can later be accessed
+(3) out(): equals to 'outE().inV()'; move to the adjacent vertex through an outgoing edge
+(4) select(), by(): Select labeled steps in a traversal
+
+Q3: Write a query that will output all the ancestors (for us, these would be prereqs) of a given vertex. Eg. running it on CS526 
+
+Ans:
+g.V().has('name','cs526').repeat(out('pre-req')).emit().until(outE().count().is(0)).values('name')
+
+Explaination:
+(1) has(): a filtering step; start from vertex 'cs526'
+(2) repeat(): loop statement; if until() comes after repeat() it is a do/while looping
+(3) emit(): used in conjunction with repeat(Traversal) to determine what objects get emit from the loop
+
+Q4: Write a query that will output the max depth starting from a given node Eg. running it on CS101
+
+Ans:
+g.V().has('name','cs101').repeat(__.in('pre-req')).emit().path().count(local).max()
+
+Explaination:
+(1) repeat(__.in('pre-req')).emit(): traverse through the "pre-req" edges emitting all vertices as it goes
+(2) count(local): calculates the path length
+(3) max(): selects the longest one
+
+

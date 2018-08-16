@@ -1,0 +1,10 @@
+CREATE DATABASE test;
+USE test;
+CREATE TABLE entries (userID int not null AUTO_INCREMENT, Name VARCHAR(255), Gender VARCHAR(255), PRIMARY KEY(userID));
+INSERT into entries (Name, Gender) values ("AMELIA", "F");
+INSERT into entries (Name, Gender) values ("OLIVIA", "F");
+INSERT into entries (Name, Gender) values ("LUCY", "F");
+INSERT into entries (Name, Gender) values ("EMILY", "F");
+INSERT into entries (Name, Gender) values ("LOLA", "F");
+SELECT * FROM entries;
+DROP DATABASE test;
