@@ -14,6 +14,8 @@
 #include <set>
 #include <iterator>
 #include <string>
+#include <iomanip>
+#include <map>
 #include "Test.h"
 
 using namespace std;
@@ -123,20 +125,118 @@ void readFile(list<City> *clist){
 
 }
 
+void mapConstrustion(list<City> *clist){
+	char dash[50] = "-------------------------------------------------";
+
+	printf("The Server A has constructed a list of <number> maps:\n");
+	printf("%s\n",dash);
+	printf("Map ID\tNum Vertices\tNum Edges\t\n");
+
+	list<City>::iterator ptr;
+	for(ptr = clist->begin(); ptr != clist->end();ptr++){
+		printf("%-6c\t%-12d\t%-12d\n",ptr->mapID,ptr->numOfVertices, ptr->numOfEdges);
+	}
+
+	printf("%s\n",dash);
+}
+
+int mapping(char city, list<City> *clist, map<int, int> &map1, map<int, int> &map2){
+
+	// printf("mapping: \n");
+
+	list<City>::iterator ptr;
+
+	for(ptr = clist->begin(); ptr != clist->end();ptr++){
+
+		if(ptr->mapID != city)
+			continue;
+		else{
+			set<int> vertices = ptr->vertices;
+			set<int>::iterator it;
+			int idx = 0;
+
+			for(it = vertices.begin();it != vertices.end(); it++){
+				// printf("ori idx: %d, new idx: %d\n", *it, idx);
+				map1[*it] = idx;
+				map2[idx] = *it;
+				idx++;
+			}
+			return vertices.size();
+		}
+	}
+
+	return -1;
+	printf("cannot find proper mapping\n");
+}
+
+void buildGraph(list<City> *clist, char city, int start, map<int, int> map1, int numOfVertices){
+	
+	int matrix[numOfVertices][numOfVertices];
+	// initialize
+	for(int i=0; i<numOfVertices; i++){
+		for(int j=0; j<numOfVertices; j++){
+			matrix[i][j] = 0;
+		}
+	}	
+
+	list<City>::iterator ptr;
+
+	for(ptr = clist->begin(); ptr != clist->end();ptr++){
+		if(ptr->mapID != city)
+			continue;
+		else{
+			list<Edge> edges = ptr->edges;
+			list<Edge>::iterator it;
+
+			for(it = edges.begin(); it != edges.end(); it++){
+				int idx1 = map1.find(it->node1)->second;
+				int idx2 = map1.find(it->node2)->second;
+				matrix[idx1][idx2] = it->distance; 
+				matrix[idx2][idx1] = it->distance;
+				// printf("node1: %d, node2:%d, dist:%d\n", idx1, idx2, it->distance);
+			}
+			break;
+		}	
+	}
+
+	for(int i=0; i<numOfVertices; i++){
+		for(int j=0; j<numOfVertices; j++){
+			printf("%d ",matrix[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+void pathFinding(char city, int startNode, list<City> *clist){
+
+	map<int, int> map1; // pair(ori_idx, new_idx)
+	map<int, int> map2; // pair(new_idx, ori_idx)
+
+	int numOfVertices = mapping(city, clist, map1, map2);
+
+	map<int, int>::iterator it;
+	it = map1.find(startNode);
+	if(it == map1.end()){
+		printf("key-value pair not exist in map1\n");
+		exit(1);
+	}
+
+	int idx = map1.find(startNode)->second;
+
+	buildGraph(clist, city, idx, map1, numOfVertices);
+
+}
+
 int main()
 {
 	list<City> *clist = new list<City>();
 	readFile(clist);
 
-	list<City>::iterator ptr;
-	for(ptr = clist->begin(); ptr != clist->end();ptr++){
-		printf("city: %c\n", ptr->mapID);
-		list<Edge> l = ptr->edges;
-		list<Edge>::iterator it;
-		for(it = l.begin(); it != l.end(); it++){
-			printf("edge: %d and %d, dist = %d\n", it->node1, it->node2, it->distance);
-		}
-	}
+	char graph = 'A';
+	int startNode = 5;
+
+	mapConstrustion(clist);
+	pathFinding(graph, startNode, clist);
 
 	return 0;
 }
