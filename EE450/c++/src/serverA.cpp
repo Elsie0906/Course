@@ -13,6 +13,7 @@
 #define HOST "127.0.0.1" 	// local IP address
 #define SERVERAPORT "21705"	// port for serverA
 #define AWSPORTUDP "23705"	// port for AWS UDP
+#define BUFFERSIZE 256
 
 
 int main()
@@ -58,19 +59,23 @@ int main()
 	freeaddrinfo(servinfo);	// free the linked list
 	printf( "The Server A is up and running using UDP on port %s.\n", SERVERAPORT);
 
-	// while(1){
-	// 	addr_len = sizeof their_addr;
-	// 	int result = 0;
+	while(1){
+		addr_len = sizeof their_addr;
 
-	// 	char buf[3];
-	// 	if((numbytes = recvfrom(sockfd, buf, sizeof buf , 0,(struct sockaddr *)&their_addr, &addr_len)) == -1){
-	// 		perror("recvfrom");
-	// 		exit(1);
-	// 	}
+		char buf[BUFFERSIZE];
+		if((numbytes = recvfrom(sockfd, buf, sizeof buf , 0,(struct sockaddr *)&their_addr, &addr_len)) == -1){
+			perror("recvfrom");
+			exit(1);
+		}
 
-	// 	//send back to aws
-	// 	sendto(sockfd, (char *)& result, sizeof result , 0,(struct sockaddr *) &their_addr, addr_len);
-	// }
+		printf("The Server A has received input for finding shortest paths: starting vertex <index> of map<ID>.\n");
+		printf("content: %s\n", buf);
+
+		//send back to aws
+		char result[19] = "Reply from serverA";
+		sendto(sockfd, result, sizeof result , 0,(struct sockaddr *) &their_addr, addr_len);
+		printf("The Server A has sent shortest paths to AWS.\n");
+	}
 
 	close(sockfd);
 	return 0;

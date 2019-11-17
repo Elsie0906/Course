@@ -9,12 +9,23 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <sys/wait.h>
+#include <string>
 
 #define HOST "127.0.0.1"
 #define AWSPORTTCP "24705"	// port for AWS TCP
+#define BUFFERSIZE 256
+
+using namespace std;
 
 int main(int argc, char *argv[])
 {
+	// check for cmd line argument
+
+	if(argc != 4){
+		printf("Usage: ./client <Map ID> <Source Vertex Index> <File Size>\n");
+		return 3;
+	}
+
 	// set up a stream socket (client) - Beej's p.34
 	int sockfd;
 	struct addrinfo hints, *servinfo, *p;
@@ -52,13 +63,26 @@ int main(int argc, char *argv[])
 	freeaddrinfo(servinfo);
 	printf("The client is up and running. \n");
 
-	// char function_name[3];
-	// strcpy(function_name,argv[1]);
+	// concatenate cmd line argument
 
-	// send(sockfd, function_name, sizeof function_name, 0);
+	char* msg = new char[BUFFERSIZE];
 
-	// int result = 0;
-	// recv(sockfd, (char *)&result, sizeof result, 0);
+	strcat(msg, argv[1]);
+	strcat(msg, " ");
+	strcat(msg, argv[2]);
+	strcat(msg, " ");
+	strcat(msg, argv[3]);
+
+	// printf("msg: %s\n", msg);
+
+	send(sockfd, msg, sizeof msg, 0);
+
+	printf("The client has sent query to AWS using TCP: start vertex %s;map %s; file size %s\n", argv[2], argv[1], argv[3]);
+
+	int result = 0;
+	recv(sockfd, (char *)&result, sizeof result, 0);
+
+	printf("The client has received results from AWS:\n");
 
 	close(sockfd);
 	return 0;

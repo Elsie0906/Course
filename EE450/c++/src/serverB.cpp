@@ -14,7 +14,7 @@
 #define HOST "127.0.0.1" 	// local IP address
 #define SERVERBPORT "22705"	// port for serverB
 #define AWSPORTUDP "23705"	// port for AWS UDP
-
+#define BUFFERSIZE 256
 
 int main()
 {
@@ -22,7 +22,10 @@ int main()
 
 	int sockfd;
 	struct addrinfo hints, *servinfo, *p;
+	struct sockaddr_storage their_addr;
 	int rv;
+	int numbytes;
+	socklen_t addr_len;	
 
 	memset(&hints, 0, sizeof hints);
 	hints.ai_family = AF_UNSPEC; // set to AF_INET to force IPv4
@@ -37,24 +40,42 @@ int main()
 	// loop through all the results and bind to the first
 	for(p = servinfo; p != NULL; p = p->ai_next){
 		if ((sockfd = socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1){
-			perror("serverA: socket");
+			perror("serverB: socket");
 			continue;
 		}
 		if (bind(sockfd, p->ai_addr, p->ai_addrlen) == -1){
 			close(sockfd);
-			perror("serverA: bind");
+			perror("serverB: bind");
 			continue;
 		}
 		break;
 	}
 
 	if (p == NULL) {
-        fprintf(stderr, "serverA: failed to bind socket\n");
+        fprintf(stderr, "serverB: failed to bind socket\n");
         return 2;
     }
 
 	freeaddrinfo(servinfo);	// free the linked list	
 	printf("The Server B is up and running using UDP on port %s. \n", SERVERBPORT);
+
+	while(1){
+		addr_len = sizeof their_addr;
+
+		char buf[BUFFERSIZE];
+		if((numbytes = recvfrom(sockfd, buf, sizeof buf , 0,(struct sockaddr *)&their_addr, &addr_len)) == -1){
+			perror("recvfrom");
+			exit(1);
+		}
+
+		printf("The Server B has received data for calculation:\n");
+		printf("content: %s\n", buf);
+
+		//send back to aws
+		char result[19] = "Reply from serverB";
+		sendto(sockfd, result, sizeof result , 0,(struct sockaddr *) &their_addr, addr_len);
+		printf("The Server B has finished sending the output to AWS.\n");
+	}
 
 	close(sockfd);
 	return 0;
