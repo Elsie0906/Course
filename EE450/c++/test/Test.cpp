@@ -16,6 +16,7 @@
 #include <string>
 #include <iomanip>
 #include <map>
+#include <vector>
 #include "Test.h"
 
 using namespace std;
@@ -128,9 +129,10 @@ void readFile(list<City> *clist){
 void mapConstrustion(list<City> *clist){
 	char dash[50] = "-------------------------------------------------";
 
-	printf("The Server A has constructed a list of <number> maps:\n");
+	printf("The Server A has constructed a list of %lu maps:\n", clist->size());
 	printf("%s\n",dash);
 	printf("Map ID\tNum Vertices\tNum Edges\t\n");
+	printf("%s\n",dash);
 
 	list<City>::iterator ptr;
 	for(ptr = clist->begin(); ptr != clist->end();ptr++){
@@ -141,8 +143,6 @@ void mapConstrustion(list<City> *clist){
 }
 
 int mapping(char city, list<City> *clist, map<int, int> &map1, map<int, int> &map2){
-
-	// printf("mapping: \n");
 
 	list<City>::iterator ptr;
 
@@ -169,16 +169,49 @@ int mapping(char city, list<City> *clist, map<int, int> &map1, map<int, int> &ma
 	printf("cannot find proper mapping\n");
 }
 
-void buildGraph(list<City> *clist, char city, int start, map<int, int> map1, int numOfVertices){
-	
-	int matrix[numOfVertices][numOfVertices];
-	// initialize
-	for(int i=0; i<numOfVertices; i++){
-		for(int j=0; j<numOfVertices; j++){
-			matrix[i][j] = 0;
-		}
-	}	
+int minDistance(vector<int> dist, vector<bool> visited){
+	int min = INT_MAX;
+	int min_index;
 
+	for(int v=0; v < dist.size(); v++){
+		if(visited[v] == false && dist[v] <=min){
+			min = dist[v];
+			min_index = v;
+		}
+	}
+
+	return min_index;
+}
+
+vector<int> findShortestPath(vector<vector<int> > matrix, int start){
+	// using Dijkstra's algorithm
+
+	int size = matrix.size();
+
+	vector<int> dist(size, INT_MAX);
+	vector<bool> visited(size, false);
+
+	dist[start] = 0;
+
+	for(int count =0; count < size -1; count++){
+		int u = minDistance(dist, visited);
+
+		visited[u] = true;
+
+		for(int v=0; v< size; v++){
+			if(!visited[v] && matrix[u][v] && dist[u] != INT_MAX && dist[u] + matrix[u][v] <dist[v])
+				dist[v] = dist[u] + matrix[u][v];
+		}
+	}
+
+	return dist;
+}
+
+vector<vector<int> > buildGraph(list<City> *clist, char city, map<int, int> map1, int numOfVertices){
+	
+	// initialize
+	vector<vector<int> > matrix(numOfVertices, vector<int> (numOfVertices,0));
+		
 	list<City>::iterator ptr;
 
 	for(ptr = clist->begin(); ptr != clist->end();ptr++){
@@ -199,15 +232,32 @@ void buildGraph(list<City> *clist, char city, int start, map<int, int> map1, int
 		}	
 	}
 
-	for(int i=0; i<numOfVertices; i++){
-		for(int j=0; j<numOfVertices; j++){
-			printf("%d ",matrix[i][j]);
-		}
-		printf("\n");
-	}
+	// for(int i=0; i<numOfVertices; i++){
+	// 	for(int j=0; j<numOfVertices; j++){
+	// 		printf("%d ",matrix[i][j]);
+	// 	}
+	// 	printf("\n");
+	// }
+
+	return matrix;	
+}
+
+void printSolution(vector<int> dist, map<int, int> map2){
+	char dash[50] = "-------------------------------------------------";
+
+	printf("The Server A has identified the following shortest paths:\n");
+	printf("%s\n",dash);
+	printf("Destionation\tMin Length\t\n");
+	printf("%s\n",dash);
+	for(int i=0; i<dist.size(); i++)
+		printf("%-12d\t%-12d\n", map2.find(i)->second, dist[i]);
+
+
 }
 
 void pathFinding(char city, int startNode, list<City> *clist){
+
+	printf("The Server A has received input for finding shortest paths: starting vertex %d of map %c.\n", startNode, city);
 
 	map<int, int> map1; // pair(ori_idx, new_idx)
 	map<int, int> map2; // pair(new_idx, ori_idx)
@@ -223,7 +273,11 @@ void pathFinding(char city, int startNode, list<City> *clist){
 
 	int idx = map1.find(startNode)->second;
 
-	buildGraph(clist, city, idx, map1, numOfVertices);
+	vector<vector<int> > matrix = buildGraph(clist, city, map1, numOfVertices);
+
+	vector<int> dist = findShortestPath(matrix, idx);
+
+	printSolution(dist, map2);
 
 }
 
