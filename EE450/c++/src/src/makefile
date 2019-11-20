@@ -15,7 +15,7 @@ all: aws.o client.o serverA.o serverB.o
 	$(CC) $(CFLAGS) -o serverA serverA.o
 	$(CC) $(CFLAGS) -o serverB serverB.o
 
-aws.o: aws.cpp
+aws.o: aws.cpp aws.h
 	$(CC) $(CFLAGS) -c aws.cpp
 
 serverA.o: serverA.cpp serverA.h

@@ -17,6 +17,23 @@
 
 using namespace std;
 
+void printOutData(double tt, int size, int vertex[10], int minlength[10], double tp[10]){
+
+	char dash[50] = "-------------------------------------------------";
+
+	printf("%s\n",dash);
+	printf("Destionation\tMin Length\tTt\tTp\tDelay\t\n");
+	printf("%s\n",dash);
+
+	double val = 0.0;
+
+	for(int i=0; i<size; i++){
+		val = tt + tp[i];
+		printf("%-12d\t%-12d%.3f\t%.3f\t%.2f\t\n", vertex[i], minlength[i], tt, tp[i], val);
+	}
+
+}
+
 int main(int argc, char *argv[])
 {
 	// check for cmd line argument
@@ -65,24 +82,38 @@ int main(int argc, char *argv[])
 
 	// serialize cmd-line arguments
 
-	char* msg = new char[BUFFERSIZE];
+	char mapID = *argv[1];
+	// printf("mapID: %c\n", mapID);
 
-	strcat(msg, argv[1]);
-	strcat(msg, " ");
-	strcat(msg, argv[2]);
-	strcat(msg, " ");
-	strcat(msg, argv[3]);
+	int startNode = atoi(argv[2]);
+	// printf("start node: %d\n", startNode);
 
-	// printf("msg: %s\n", msg);
+	unsigned long int fileSize = atol(argv[3]);
+	// printf("file size: %lu\n", fileSize);
 
-	send(sockfd, msg, sizeof msg, 0);
+	send(sockfd, &mapID, sizeof mapID, 0);
+	send(sockfd, &startNode, sizeof startNode, 0);
+	send(sockfd, &fileSize, sizeof fileSize, 0);
 
-	printf("The client has sent query to AWS using TCP: start vertex %s;map %s; file size %s\n", argv[2], argv[1], argv[3]);
+	printf("The client has sent query to AWS using TCP: start vertex %d;map %c; file size %lu\n", startNode, mapID, fileSize);
 
-	int result = 0;
-	recv(sockfd, (char *)&result, sizeof result, 0);
+	double tt = 0.00f;
+	recv(sockfd, &tt, sizeof tt, 0);
+
+	int size = 0;
+	recv(sockfd, &size, sizeof size, 0);
+
+	int vertex[10] = {0};
+	int minlength[10] = {0};
+	double tp[10] = {0.00f};
+
+	recv(sockfd, vertex, sizeof vertex, 0);
+	recv(sockfd, minlength, sizeof minlength, 0);
+	recv(sockfd, tp, sizeof tp, 0);
 
 	printf("The client has received results from AWS:\n");
+
+	printOutData(tt, size, vertex, minlength, tp);
 
 	close(sockfd);
 	return 0;

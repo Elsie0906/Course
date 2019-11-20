@@ -11,12 +11,13 @@
 #include <sys/wait.h>
 #include <string>
 #include <iostream>
+#include "aws.h"
 
 #define HOST "127.0.0.1"	// local IP address
 #define AWSPORTUDP "23705"	// port for AWS UDP
 #define AWSPORTTCP "24705"	// port for AWS TCP
-#define SERVERAPORT "21705"	// port for serverA
-#define SERVERBPORT "22705"	// port for serverB
+#define SERVERAPORT 21705	// port for serverA
+#define SERVERBPORT 22705	// port for serverB
 #define BUFFERSIZE 256
 
 using namespace std;
@@ -29,23 +30,62 @@ void *get_in_addr(struct sockaddr *sa)
     return &(((struct sockaddr_in6*)sa)->sin6_addr);
 }
 
-int talkWithServerA(char mapID, int startNode){
+void printDataFromA(int size, int vertex[10], int minlength[10], MinPath *result){
 
-	// printf("mapID: %c, startNode: %d\n", mapID, startNode);
+	char dash[50] = "-------------------------------------------------";
+
+	vector<int> vertices(size, 0);
+	vector<int> minLength(size, 0);	
+
+	printf("The AWS has received shortest path from server A:\n");
+	printf("%s\n",dash);
+	printf("Destionation\tMin Length\t\n");
+	printf("%s\n",dash);
+	for(int i=0; i<size; i++){
+		vertices[i] = vertex[i];
+		minLength[i] = minlength[i];
+		printf("%-12d\t%-12d\n", vertex[i], minlength[i]);
+	}	
+
+	result->vertex = vertices;
+	result->minlength = minLength;
+}
+
+void printDataFromB(int vertex[10], double tp[10], int size, double tt, MinPath *buf){
+	char dash[50] = "-------------------------------------------------";
+
+	vector<double> Tp(size, 0.00);
+
+	printf("%s\n",dash);
+	printf("Destionation\tTt\tTp\tDelay\t\n");
+	printf("%s\n",dash);
+
+	double val = 0.0;
+
+	for(int i=0; i<size; i++){
+		val = tt + tp[i];
+		Tp[i] = tp[i];
+		printf("%-12d\t%.3f\t%.3f\t%.2f\t\n", vertex[i], tt, tp[i], val);
+	}
+
+	buf->tp = Tp;
+}
+
+int createUDPSocket(){
 	// set up UDP - from Beej
+
 	int AWSSocket_UDP;
 	struct addrinfo hints, *servinfo, *p;
 	int rv;
-	int numbytes;
 
 	memset(&hints, 0, sizeof hints);
 	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_DGRAM;
 
-	if ((rv = getaddrinfo(HOST, SERVERAPORT, &hints, &servinfo)) != 0){
+	if ((rv = getaddrinfo(HOST, AWSPORTUDP, &hints, &servinfo)) != 0){
 		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
 		return 1;
-	}
+	}	
 
 	// loop through all the results and bind to the first
 	for(p = servinfo; p != NULL; p = p->ai_next){
@@ -54,12 +94,27 @@ int talkWithServerA(char mapID, int startNode){
 			continue;
 		}
 		break;
-	}	
+	}
 
 	if (p == NULL) {
         fprintf(stderr, "talkerA: failed to bind socket\n");
         return 2;
-    }	
+    }
+
+    return AWSSocket_UDP;
+}
+
+int talkWithServerA(int AWSSocket_UDP,char mapID, int startNode, MinPath *result){	
+
+	struct sockaddr_in addrServerA;
+	socklen_t addrServerA_length = sizeof(addrServerA);
+	int numbytes;
+
+	memset(&addrServerA, 0, sizeof(addrServerA));
+	addrServerA.sin_family = AF_INET;
+	addrServerA.sin_port = htons(SERVERAPORT);
+	addrServerA.sin_addr.s_addr = inet_addr(HOST);
+
 
     // serialize data
 
@@ -75,87 +130,86 @@ int talkWithServerA(char mapID, int startNode){
     string str = to_string(startNode);
     strcat(msg, str.c_str());
 
-    if((numbytes = sendto(AWSSocket_UDP, msg, sizeof msg, 0, p->ai_addr,p->ai_addrlen)) == -1){
+    if((numbytes = sendto(AWSSocket_UDP, msg, sizeof msg, 0, (struct sockaddr*)&addrServerA, addrServerA_length)) == -1){
     	perror("talkerA: sendto");
     	exit(1);
     }
-    printf("The AWS has sent map ID and starting vertex to server A using UDP over port %s\n", SERVERAPORT);
+    printf("The AWS has sent map ID and starting vertex to server A using UDP over port %s\n", AWSPORTUDP);
 
-    // char result[BUFFERSIZE];
-    // recvfrom(AWSSocket_UDP, result, sizeof result, 0 , NULL, NULL);
     float retVal[2] = {0.00f};
-    recvfrom(AWSSocket_UDP, retVal, sizeof retVal, 0 , NULL, NULL);
-    printf("prop: %.2f, trans: %.2f\n", retVal[0], retVal[1]);
+    recvfrom(AWSSocket_UDP, retVal, sizeof retVal, 0 , (struct sockaddr*)&addrServerA, &addrServerA_length);
+    // printf("prop: %.2f, trans: %.2f\n", retVal[0], retVal[1]);
+
+    result->propagation = retVal[0];
+    result->transmission = retVal[1];
 
     int size = 0;
-    recvfrom(AWSSocket_UDP, &size, sizeof size, 0 , NULL, NULL);
-    printf("num of vertex: %d\n", size);
+    recvfrom(AWSSocket_UDP, &size, sizeof size, 0 , (struct sockaddr*)&addrServerA, &addrServerA_length);
+    // printf("num of vertex: %d\n", size);
 
     int vertex[10] = {0};
 	int minlength[10] = {0};
 
-	recvfrom(AWSSocket_UDP, vertex, sizeof vertex, 0 , NULL, NULL);
-	recvfrom(AWSSocket_UDP, minlength, sizeof minlength, 0 , NULL, NULL);
+	recvfrom(AWSSocket_UDP, vertex, sizeof vertex, 0 , (struct sockaddr*)&addrServerA, &addrServerA_length);
+	recvfrom(AWSSocket_UDP, minlength, sizeof minlength, 0 , (struct sockaddr*)&addrServerA, &addrServerA_length);	
 
-	for(int i=0; i<size; i++){
-		printf("node: %d, length: %d\n", vertex[i], minlength[i]);
-	}	
+	printDataFromA(size, vertex, minlength, result);
 
-    printf("The AWS has received shortest path from server A:\n");
+	// freeaddrinfo(servinfo);
 
-	freeaddrinfo(servinfo);
-    close(AWSSocket_UDP);
     return 0;
 }
 
-int talkWithServerB(char *buf){
-	// set up UDP - from Beej
-	int AWSSocket_UDP;
-	struct addrinfo hints, *servinfo, *p;
-	int rv;
+int talkWithServerB(int AWSSocket_UDP,MinPath *buf, unsigned long int fileSize){	
+
+	struct sockaddr_in addrServerB;
+	socklen_t addrServerB_length = sizeof(addrServerB);
 	int numbytes;
 
-	memset(&hints, 0, sizeof hints);
-	hints.ai_family = AF_UNSPEC;
-	hints.ai_socktype = SOCK_DGRAM;
+	memset(&addrServerB, 0, sizeof(addrServerB));
+	addrServerB.sin_family = AF_INET;
+	addrServerB.sin_port = htons(SERVERBPORT);
+	addrServerB.sin_addr.s_addr = inet_addr(HOST);
 
-	if ((rv = getaddrinfo(HOST, SERVERBPORT, &hints, &servinfo)) != 0){
-		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(rv));
-		return 1;
-	}
+    float msg[2] = {0.00f};
+	msg[0] = buf->propagation;
+	msg[1] = buf->transmission;
 
-	// loop through all the results and bind to the first
-	for(p = servinfo; p != NULL; p = p->ai_next){
-		if ((AWSSocket_UDP = socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1){
-			perror("talkerB: socket");
-			continue;
-		}
-		break;
-	}	
-
-	if (p == NULL) {
-        fprintf(stderr, "talkerB: failed to bind socket\n");
-        return 2;
-    }	
-
-    char function_name[20] = "Message for serverB";
-    if((numbytes = sendto(AWSSocket_UDP, function_name, sizeof function_name, 0, p->ai_addr,p->ai_addrlen)) == -1){
+    if((numbytes = sendto(AWSSocket_UDP, msg, sizeof msg, 0, (struct sockaddr*)&addrServerB, addrServerB_length)) == -1){
     	perror("talkerB: sendto");
     	exit(1);
     }
-    printf("The AWS has sent path length, propagation speed and transmission speed to server B using UDP over port %s.\n", SERVERBPORT);
 
-    char result[BUFFERSIZE];
-    recvfrom(AWSSocket_UDP, result, sizeof result, 0 , NULL, NULL);
+    sendto(AWSSocket_UDP, &fileSize, sizeof fileSize, 0, (struct sockaddr*)&addrServerB, addrServerB_length);
+
+    int size = buf->vertex.size();
+    sendto(AWSSocket_UDP, &size, sizeof size, 0, (struct sockaddr*)&addrServerB, addrServerB_length);
+
+    int vertex[10] = {0};
+    int minlength[10] = {0};
+
+	for(int i=0; i<size; i++){
+		vertex[i] = buf->vertex[i];
+		minlength[i] = buf->minlength[i];
+		// printf("node: %d, length: %d\n", buf->vertex[i], buf->minlength[i]);
+	}
+	sendto(AWSSocket_UDP, vertex, sizeof vertex, 0, (struct sockaddr*)&addrServerB, addrServerB_length);
+	sendto(AWSSocket_UDP, minlength, sizeof minlength, 0, (struct sockaddr*)&addrServerB, addrServerB_length);
+    printf("The AWS has sent path length, propagation speed and transmission speed to server B using UDP over port %s.\n", AWSPORTUDP);
+
+    double result[10] = {0.00f};
+    recvfrom(AWSSocket_UDP, result, sizeof result, 0 , (struct sockaddr*)&addrServerB, &addrServerB_length);
     printf("The AWS has received delays from server B:\n");
-    printf("%s\n", result);
+    
+    double tt = fileSize/(msg[1]*8);
+    printDataFromB(vertex, result, size, tt, buf);
 
-    freeaddrinfo(servinfo);
-    close(AWSSocket_UDP);	
+    // freeaddrinfo(servinfo);
+	
     return 0;
 }
 
-void parseInfo(char *buf, char &mapID, int &srcNode, long int &fileSize){
+void parseInfo(char *buf, char &mapID, int &srcNode, unsigned long int &fileSize){
 	char* delim = " ";
 	char* token = strtok(buf, delim);
 	int i=0;
@@ -174,7 +228,7 @@ void parseInfo(char *buf, char &mapID, int &srcNode, long int &fileSize){
 			}
 			case 2:{
 				fileSize = atol(token);
-				// printf("token: %lu\n", fileSize);
+				// printf("token: %s\n", token);
 				break;
 			}
 			default:
@@ -240,6 +294,8 @@ int main()
 
 	printf("The AWS is up and running. \n");
 
+	int udp = createUDPSocket();
+
 	while(1){
 		sin_size = sizeof their_addr;
 		new_fd = accept(sockfd, (struct sockaddr *)&their_addr, &sin_size);
@@ -252,26 +308,49 @@ int main()
 		inet_ntop(their_addr.ss_family,get_in_addr((struct sockaddr *)&their_addr),s, sizeof s);
 		// printf("server: got connection from %s\n", s);
 
-		// deserialize
-		char buf[BUFFERSIZE];
+		// deserialize data
+
 		char mapID;
 		int srcNode = -1;
-		long int fileSize = 0;
-		recv(new_fd, buf, sizeof buf, 0);
-		// printf("content: %s\n", buf);
-		parseInfo(buf, mapID, srcNode, fileSize);
+		unsigned long int fileSize = 0;
+
+		recv(new_fd, &mapID, sizeof mapID, 0);
+		recv(new_fd, &srcNode, sizeof srcNode, 0);
+		recv(new_fd, &fileSize, sizeof fileSize, 0);
+
 		printf("The AWS has received map ID %c, start vertex %d and file size %lu from the client using TCP over port %s\n", mapID, srcNode, fileSize, AWSPORTTCP);
 		
-		talkWithServerA(mapID, srcNode);
-		talkWithServerB(buf);
+		MinPath *result = new MinPath();
+		talkWithServerA(udp, mapID, srcNode, result);
+		talkWithServerB(udp, result, fileSize);
 
-		int result = 0;
-		send(new_fd, (const char *)&result, sizeof(result), 0);
-		printf("The AWS has sent calculated delay to client using TCP over port <port number>.\n");
+		double tt = 0.00f;
+		tt = fileSize/(result->transmission*8);
+		send(new_fd, &tt, sizeof(tt), 0);
+
+		int size = result->vertex.size();
+		send(new_fd, &size, sizeof(size), 0);
+
+		int vertex[10] = {0};
+		int minlength[10] = {0};
+		double tp[10] = {0.00f};
+
+		for(int i=0; i<size; i++){
+			vertex[i] = result->vertex[i];
+			minlength[i] = result->minlength[i];
+			tp[i] = result->tp[i];
+		}
+
+		send(new_fd, vertex, sizeof(vertex), 0);
+		send(new_fd, minlength, sizeof(minlength), 0);
+		send(new_fd, tp, sizeof(tp), 0);
+
+		printf("The AWS has sent calculated delay to client using TCP over port %s.\n", AWSPORTTCP);
 
 		close(new_fd);
 	}
 
+	close(udp);
 	close(sockfd);
 	return 0;
 }

@@ -10,11 +10,48 @@
 #include <arpa/inet.h>
 #include <sys/wait.h>
 #include <math.h>
+#include <ctype.h>
+#include <iostream>
+#include <set>
+#include <iterator>
+#include <string>
+#include <iomanip>
+#include <map>
+#include <vector>
 
 #define HOST "127.0.0.1" 	// local IP address
 #define SERVERBPORT "22705"	// port for serverB
 #define AWSPORTUDP "23705"	// port for AWS UDP
 #define BUFFERSIZE 256
+
+using namespace std;
+
+vector<double> calc(float speed, int size, int length[10]){
+	vector<double> tp(size, 0);
+
+	for(int i=0; i<size; i++){
+		double val = (double)length[i]/speed;
+		tp[i] = val;
+	}
+
+	return tp;
+}
+
+void printCalculation(int vertex[10], vector<double> tp, double tt){
+	char dash[50] = "-------------------------------------------------";
+
+	printf("%s\n",dash);
+	printf("Destionation\tTt\tTp\tDelay\t\n");
+	printf("%s\n",dash);
+
+	int size = tp.size();
+	double val = 0.0;
+
+	for(int i=0; i<size; i++){
+		val = tt + tp[i];
+		printf("%-12d\t%.3f\t%.3f\t%.2f\t\n", vertex[i], tt, tp[i], val);
+	}
+}
 
 int main()
 {
@@ -62,17 +99,49 @@ int main()
 	while(1){
 		addr_len = sizeof their_addr;
 
-		char buf[BUFFERSIZE];
-		if((numbytes = recvfrom(sockfd, buf, sizeof buf , 0,(struct sockaddr *)&their_addr, &addr_len)) == -1){
+		float msg[2] = {0.00f};
+		if((numbytes = recvfrom(sockfd, msg, sizeof msg , 0,(struct sockaddr *)&their_addr, &addr_len)) == -1){
 			perror("recvfrom");
 			exit(1);
 		}
+		// printf("prop: %.2f, trans: %.2f\n", msg[0], msg[1]);
+
+		unsigned long int fileSize = 0;
+		recvfrom(sockfd, &fileSize, sizeof fileSize , 0,(struct sockaddr *)&their_addr, &addr_len);
+		printf("filesize: %lu\n", fileSize);
+
+		int size = 0;
+		recvfrom(sockfd, &size, sizeof size , 0,(struct sockaddr *)&their_addr, &addr_len);
+		// printf("num of vertex: %d\n", size);
+
+		int vertex[10] = {0};
+		int minlength[10] = {0};
+
+		recvfrom(sockfd, vertex, sizeof vertex , 0,(struct sockaddr *)&their_addr, &addr_len);
+		recvfrom(sockfd, minlength, sizeof minlength , 0,(struct sockaddr *)&their_addr, &addr_len);
 
 		printf("The Server B has received data for calculation:\n");
-		printf("content: %s\n", buf);
+		printf("* Propagation speed: %.2f km/s;\n", msg[0]);
+		printf("* Transmission speed %.2f Bytes/s;\n", msg[1]);
+
+		for(int i=0; i<size; i++){
+			printf("* Path length for destination %d:%d;\n", vertex[i], minlength[i]);
+		}
+
+		vector<double> tp = calc(msg[0], size, minlength);
+
+		printf("The Server B has finished the calculation of the delays:\n");
+
+		double tt = fileSize/(msg[1]*8);
+		printCalculation(vertex, tp, tt);
 
 		//send back to aws
-		char result[19] = "Reply from serverB";
+		double result[10] = {0.00f};
+
+		for(int i=0; i<size; i++){
+			result[i] = tp[i];
+		}
+
 		sendto(sockfd, result, sizeof result , 0,(struct sockaddr *) &their_addr, addr_len);
 		printf("The Server B has finished sending the output to AWS.\n");
 	}
